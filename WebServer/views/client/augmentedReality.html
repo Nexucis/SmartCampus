@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+ * SmartCampus
+ *  ©SmartCampus 2014 https://github.com/thomasNDS/SmartCampus2014
+ *  License MIT
+-->
+
+<html>
+    <head>
+        <title>SmartCampus - Camera</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="icon" type="image/png" href="/images/logo_black.png" />
+
+        <!-- Loading Bootstrap -->
+        <link href="/bootstrap2/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+        <link href="/bootstrap2/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- CSS de la page -->
+        <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+        <!-- JS -->
+        <script type="text/javascript" src="/js/translate.js"></script>
+        <script src="/js/libs/AR_mediaStream_fichiers/ga.js" async="" type="text/javascript"></script>
+        <script src="/js/libs/AR_mediaStream_fichiers/JSARToolKit.js"></script>
+        <script src="/js/libs/AR_mediaStream_fichiers/utils.js"></script>
+        <script src="/js/libs/jquery/jquery.js"></script>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/js/configureAddressServeur.js"></script>
+        <script src="/js/screenManagement.js"></script>
+        <script src="/js/panelManager.js"></script>
+        <script src="/js/augmentedReality.js"></script>
+
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <!--MENU-->
+            <nav id="menu" class="navbar navbar-static-top navbar-inverse">
+                <div class="navbar-inner">
+                    <div class="container-fluid"> 
+                        <ul class="nav">
+                            <li><a href="parameters.html" data-target="#popParam" data-toggle="modal"><i class="icon-white fa fa-cog logoFont"></i> <!--Paramètres--></a></li>
+                            <li><a href="about.html" data-target="#popAbout" data-toggle="modal"><i class="icon-white fa fa-info-circle logoFont"></i> <!--A Propos--> </a></li>
+                            <li><a href="help.html" data-target="#popHelp" data-toggle="modal"><i class="icon-white fa fa-question-circle logoFont"></i> <!--Aide--> </a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-white fa fa-plus-square logoFont">
+                                        <span class="caret"></span>
+                                    </i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/covoiturage.html">Covoiturage</a></li>
+                                    <li><a href="/casierNFC.html">Smart self service</a></li>
+                                    <li><a href="#">Météo</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <button id="btnFullScreen" class="btn btn-primary pull-right" onclick="manageFullScreen(document.documentElement);"><i class="fa icon-white fa-arrows-alt logoFont"></i> </button>      
+                        <button class="btn btn-primary pull-right" onclick="window.location = 'index.html'"><i class="fa icon-white fa-map-marker logoFont"></i> </button>
+                    </div>
+                </div>
+            </nav>
+
+            <!--DIV POUR LA VIDEO-->
+            <div id="backgroundVideo"></div>
+
+            <!--DIV QUI CONTIENDRA L'UI-->
+            <div id="mainContent" class="container-fluid">
+                <!--Tout le contenu dans une row--> 
+                <div class="row-fluid voffset5">
+                    <div id="pageContent" class="span12">
+                    </div>
+
+                    <!--POP UP AFFICHER QUAND EN FACE D'UN BATIMENT--> 
+                    <div id="popUpInfos" class="modal hide fade">
+                        <div class="modal-header"> <a class="close" data-dismiss="modal">×</a>
+                            <h3 id="popUpTitle"></h3>
+                        </div>
+                        <div id="popUpContent" class="modal-body">
+                            Voulez-vous l'afficher ?
+                        </div>
+                        <div id="popUpFooter" class="modal-footer"> 
+                            <a class="btn btn-success" onclick="showInfoPanel()" data-dismiss="modal">Plus d'informations ?</a>
+                        </div>
+                    </div>
+
+                    <!--Barre du bas pour le popUp info quand un panel est déjà affiché-->
+                    <nav id="bottomPopUp" class="navbar navbar-fixed-bottom navbar-inverse">
+                        <div class="navbar-inner">
+                            <div class="container-fluid" >
+                                <button class="btn btn-large btn-primary pull-right" onclick="closeBottomPopUp()">X</button>
+                                <div id="bottomPopUpArrow" class="row-fluid" onclick="showInfoPanel()">^</div>
+                                <div id="bottomPopUpContent" class="row-fluid" onclick="showInfoPanel()">
+                                    <div id="bottomPopUpPicture" class="span2"></div>
+                                    <div id="bottomPopUpDescription" class="span7"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+
+                </div>
+            </div>
+
+            <img id="logo" src="/images/logo_SmartCampus_transparent.svg" alt="SmartCampus" />
+
+        </div>
+
+        <script>
+            loadEntities();
+            buildEmptyPanel("#pageContent");
+            buildEmptyPanel("#mainContent");
+            showModalParameters('#mainContent');
+            showModalAbout('#mainContent');
+            showModalHelp('#mainContent');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+menu template for interface
+ * SmartCampus
+ *  ©SmartCampus 2014 https://github.com/thomasNDS/SmartCampus2014
+ *  License MIT
+-->
+<html>
+    <head>
+        <title>Index - Bootstrap</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Loading Bootstrap -->
+        <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="js/libs/jquery/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <form><button style="margin: 20px;font-weight: bold;" class=" btn btn-sm btn-primary" type="button" onclick="history.go(-1);
+                return false;" >Retour</button></form>
+        <div id="wrapper" class="container-fluid">
+            <form class="form-horizontal">
+                <div class="row">
+                    <h1 class="col-sm-12">Covoiturage au départ de Grenoble</h1>
+                </div>
+                <div class="alert alert-info">
+                    Cette application de covoiturage regroupe les voyages au départ du campus de grenoble.
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input id="dest" type="text" class="form-control" placeholder="Destination">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input id="date" type="date" class="form-control">
+                    </div>
+                </div>
+            </form>
+            <div class="col-sm-offset-1">
+                <button id="send" onclick="searchTrips();" class="btn btn-primary">Rechercher</button>
+            </div>
+            <br>
+            <div id="show" class="row">
+                <div class="col-sm-4"><img src="images/ajax-loader.gif" alt="Chargement..."></div>
+            </div>
+        </div>
+
+        <script>
+            jQuery.post("/covoiturage", {
+                "destination": "Paris",
+                "day": "23",
+                "month": "3",
+                "year": "2014"
+            }, function(data, textStatus, jqXHR) {
+                console.log("Post response:");
+                console.dir(data);
+                console.log(textStatus);
+                console.dir(jqXHR);
+                $("#show").html("<h3>Résultats pour Paris :</h3>" + data);
+            });
+
+            function searchTrips() {
+                $("#show").html("<div class=\"row\"><div class=\"col-sm-4\"><img src=\"images/ajax-loader.gif\" alt=\"Chargement...\"></div></div>");
+                var date = $("#date").val().split("-");
+                jQuery.post("/covoiturage", {
+                    "destination": $("#dest").val(),
+                    "day": date[2],
+                    "month": date[1],
+                    "year": date[0]
+                }, function(data, textStatus, jqXHR) {
+                    console.log("Post response:");
+                    console.dir(data);
+                    console.log(textStatus);
+                    console.dir(jqXHR);
+                    $("#show").html(data);
+                });
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+    <head>
+        <title>SmartCampus | Admin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="js/libs/jquery/jquery.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/admin.js"></script>
+    </head>
+
+    <body>
+
+        <div id="wrapper" class="container">
+            <nav class="row">
+                <ul id="entities_list" class="nav nav-tabs navbar-static-top navbar-inverse">
+                    <li><img src="images/logo_SmartCampus_blue.svg" alt="SmartCampus" 
+                             style="height:35px; padding-right:20px;"/></li>
+                </ul>
+            </nav>
+
+            <div class="row">
+                <nav class="col-md-2" id="leftmenu">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#" id="menu_configuration" onclick="get_sensors()"><i class="glyphicon glyphicon-cog"></i> Configuration</a></li>
+                        <li><a href="#" id="menu_comments" onclick="get_comments()"><i class="glyphicon glyphicon-comment"></i> Commentaires</a></li>
+                        <li><a href="#" id="menu_rights"><i class="glyphicon glyphicon-ok-sign"></i> Droits</a></li>
+                        <li><a href="#" id="menu_events" onclick="get_events()"><i class="glyphicon glyphicon-calendar"></i> Événements</a></li>
+                    </ul>
+                </nav>
+
+                <div id="splitter">
+                    <div class="col-md-5">
+                        <div id="entities_content" class="tab-content"></div>
+                        <div id="leftpanel"></div>
+                    </div>
+                    <div id="div_openhab" class="col-md-5">
+                        <img src="images/openhab-logo.jpg" alt="Interface openHAB" style="width:100%"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript">
+
+            initialize();
+
+        </script>
+
+    </body>
+</html>

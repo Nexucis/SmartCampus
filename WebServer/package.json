@@ -1,0 +1,30 @@
+{
+  "name" : "ServeurMqtt",
+  "version" : "2.0.1",
+  "main" : "./serveur.js",
+  "author" : {
+    "name" : "SmartCampus 2015",
+    "email" : "smartcampus2015@googlegroups.com"
+  },
+  "keywords" : [ "smartcities", "campus"],
+  "licenses" : {
+    "type" : "mit"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/Nexucis/SmartCampus.git"
+  },
+  "bugs" : {
+    "url" : "https://github.com/Nexucis/SmartCampus/issues"
+  },
+  "dependencies" : {
+  	"ejs" : "1.0.0",
+	"express" : "3.4.8",
+	"express-restify-mongoose" : "0.6.10",
+	"mers" : "0.9.3",
+	"mongodb" : "1.4.17",
+	"mongoose" : "3.8.7",
+	"mongoose-schema-extend" : "0.1.7",
+	"mqtt" : "0.3.12"
+  }
+}
