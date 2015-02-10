@@ -1,0 +1,39 @@
+{
+  "name": "smartcampus.org",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Nexucis/SmartCampus",
+  "authors": [
+    "Paul Labat <labat.paul@gmail.com>",
+    "Jérôme Barbier",
+    "Rodolphe Fréby",
+    "Augustin Husson",
+    "Adji Sambe"
+  ],
+  "description": "Site web du projet SmartCampus 2015",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "SmartCampus",
+    "SmartCities",
+    "SmartCitizen"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.2",
+    "leaflet": "0.7.3",
+    "components-font-awesome": "~4.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Nexucis/SmartCampus.git"
+  }
+}

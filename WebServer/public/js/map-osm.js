@@ -79,7 +79,6 @@ var pois = [];
                     entity++;
                 }
                 var marker;
-                console.log(pois);
                 $.each(pois, function(index, value) {
                     marker = L.marker([value.latitude, value.longitude], {icon:ICONS[value.type]})
                         .addTo(map)
