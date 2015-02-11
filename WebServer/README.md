@@ -6,9 +6,9 @@ The Nodejs smartCampus server.
 NodeJS
 ----------
  Download source http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz
-   ./configure
-   make
-   sudo make install
+    ./configure
+    make
+    sudo make install
  
 Bower
 ----------
