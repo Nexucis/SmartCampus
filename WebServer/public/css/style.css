@@ -36,7 +36,9 @@ body {
 }
 
 #mainContent {
-    position : relative;
+    position : absolute;
+    left:20%;
+    top:30%;
 }
 
 #wrapper {
@@ -53,7 +55,6 @@ body {
 
 #popUpInfos {
     width: 60%;
-    position: absolute;
     top: 20%;
     left: 20%;
     margin-top: 0%;
@@ -232,14 +233,15 @@ body {
 #informationPanel{
     display: none;
     background-color : white;
+    height: 400px;
+    width: 700px;
     border-radius : 6px;
-    padding-bottom: 5px;
 }
 
 .commentBtn {
     margin-right: 5%;
     /*padding-top: 5px;*/
-    /*text-align: center;*/
+    /text-align: center;
 }
 
 #tabsPanel {

@@ -74,7 +74,17 @@ menu template for interface
             <!--DIV QUI CONTIENDRA L'UI-->
             <div id="mainContent" class="container-fluid">
                 <!-- Tout le contenu dans une row -->
-                <div class="row-fluid voffset5">
+                
+                <div id="informationPanel">
+                    <div class="titlePanel">
+                        <h3 id="informationTitle"></h3>
+                        <button class="btn btn-primary" onclick="closePanel()">x</button>
+                    </div>
+                    <div class="tabbable tabs-left">
+                        <ul id="tabsPanel" class="nav nav-tabs">
+                        </ul>
+                        <div id="contentTabs" class="tab-content"></div>
+                    </div>
                 </div>
             </div>
 
