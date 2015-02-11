@@ -1,18 +1,29 @@
 MQTT server
 ==============
 
-The Nodejs smartCampus server
+The Nodejs smartCampus server.
 
-Install
+NodeJS
+----------
+ Download source http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz
+   ./configure
+   make
+   sudo make install
+ 
+Bower
+----------
+    sudo npm install -g bower
+
+Install dependences
 -----------
+    npm install
+    bower install
 
-sudo npm install 
 
 Launch
 -----------
 
-sudo service mongodb start  
-node serveur.js
+    node serveur.js
 
 Init database
 --------------
@@ -36,19 +47,19 @@ API
 =====
     
 Show all entities
-http://localhost:4242/api/entity/ 
+    http://localhost:4242/api/entity/ 
 
 Show an entity $id
-http://localhost:4242/api/entity/$id/ 
+    http://localhost:4242/api/entity/$id/ 
 
 Show infos of entity $id
-http://localhost:4242/api/entity/$id/infos 
+    http://localhost:4242/api/entity/$id/infos 
 
 Show the first info of entity $id
-http://localhost:4242/api/entity/$id/infos/0 
+    http://localhost:4242/api/entity/$id/infos/0 
 
 Show the first info of entity $id
-http://localhost:4242/api/entity/$id/infos/0/uneInfo 
+    http://localhost:4242/api/entity/$id/infos/0/uneInfo 
     
 Examples
 --------
