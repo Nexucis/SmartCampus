@@ -5,48 +5,45 @@
  */
 
 var map = L.map('map-canvas').setView([45.19, 5.76], 14);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-            maxZoom:18
-    }).addTo(map);
 
-
+var mapboxUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+    mapboxAttribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
 
 var ecole = L.AwesomeMarkers.icon({
     icon: 'education',
     prefix: 'glyphicon',
     markerColor: 'blue'
-  })
-    tram = L.AwesomeMarkers.icon({
+})
+tram = L.AwesomeMarkers.icon({
     icon: 'subway',
     prefix: 'fa',
     markerColor: 'green'
-  }),
+}),
     commerce = L.AwesomeMarkers.icon({
     icon: 'shopping-cart',
     prefix: 'fa',
     markerColor: 'red'
-  }),
+}),
     food = L.AwesomeMarkers.icon({
     icon: 'cutlery',
     prefix: 'fa',
     markerColor: 'purple'
-  }),
+}),
     bar = L.AwesomeMarkers.icon({
     icon: 'beer',
     prefix: 'fa',
     markerColor: 'darkgreen'
-  }),
+}),
     bed = L.AwesomeMarkers.icon({
     icon: 'bed',
     prefix: 'fa',
     markerColor: 'cadetblue'
-  }),
+}),
     library = L.AwesomeMarkers.icon({
     icon: 'book',
     prefix: 'glyphicon',
     markerColor: 'orange'
-  });
+});
 
 var ICONS = {
     "Université": ecole,
@@ -62,25 +59,41 @@ var ICONS = {
     "Bar":bar
 };
 
+//define layers
+var poiLayer = new L.LayerGroup();
 
 var pois = [];
-    $.getJSON('/api/entity/',
-            function(data) {
-                var entity = 0;
-                while (data.payload[entity]) {
-                    if (data.payload[entity].latitude && data.payload[entity].longitude) {
-                        pois.push(
-                                data.payload[entity]
-                                );
-                    }
-                    entity++;
-                }
-                var marker;
-                $.each(pois, function(index, value) {
-                    marker = L.marker([value.latitude, value.longitude], {icon:ICONS[value.type]})
-                        .addTo(map)
-                        .on('click', function (e) {
-                            buildPanel(value);
-                        });
-                });
-            });
+
+$.getJSON('/api/entity/',
+          function(data) {
+    var entity = 0;
+    while (data.payload[entity]) {
+        if (data.payload[entity].latitude && data.payload[entity].longitude) {
+            pois.push(
+                data.payload[entity]
+            );
+        }
+        entity++;
+    }
+    var marker;
+    $.each(pois, function(index, value) {
+        marker = L.marker([value.latitude, value.longitude], {icon:ICONS[value.type]})
+        .addTo(map)
+        .on('click', function (e) {
+            buildPanel(value);
+        })
+        .addTo(poiLayer);
+    });
+});
+
+var overlays = {
+    "Points of interest": poiLayer
+}
+
+L.tileLayer(mapboxUrl, {
+    attribution: mapboxAttribution,
+    maxZoom:18,
+    layers:[poiLayer]
+}).addTo(map);
+
+L.control.layers(null,overlays).addTo(map);
