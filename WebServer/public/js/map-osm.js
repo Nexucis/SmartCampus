@@ -12,41 +12,41 @@ var map = L.map('map-canvas').setView([45.19, 5.76], 14);
 
 
 
-var ecole = L.icon({
-    iconUrl:"/images/school.png",
-    iconSize:[25,25],
-    iconAnchor:[12,12]
-    }),
-    tram = L.icon({
-    iconUrl:"/images/tramway.png",
-    iconSize:[24,24],
-    iconAnchor:[12,12]
-    }),
-    commerce = L.icon({
-    iconUrl:"/images/store.png",
-    iconSize:[25,25],
-    iconAnchor:[12,12]
-    }),
-    food = L.icon({
-    iconUrl:"/images/food.png",
-    iconSize:[25,25],
-    iconAnchor:[12,12]
-    }),
-    bar = L.icon({
-    iconUrl:"/images/bar.png",
-    iconSize:[25,25],
-    iconAnchor:[12,12]
-    }),
-    bed = L.icon({
-    iconUrl:"/images/bed.png",
-    iconSize:[25,25],
-    iconAnchor:[12,12]
-    }),
-    library = L.icon({
-    iconUrl:"/images/library.png",
-    iconSize:[25,25],
-    iconAnchor:[12,12]
-    });
+var ecole = L.AwesomeMarkers.icon({
+    icon: 'education',
+    prefix: 'glyphicon',
+    markerColor: 'blue'
+  })
+    tram = L.AwesomeMarkers.icon({
+    icon: 'subway',
+    prefix: 'fa',
+    markerColor: 'green'
+  }),
+    commerce = L.AwesomeMarkers.icon({
+    icon: 'shopping-cart',
+    prefix: 'fa',
+    markerColor: 'red'
+  }),
+    food = L.AwesomeMarkers.icon({
+    icon: 'cutlery',
+    prefix: 'fa',
+    markerColor: 'purple'
+  }),
+    bar = L.AwesomeMarkers.icon({
+    icon: 'beer',
+    prefix: 'fa',
+    markerColor: 'darkgreen'
+  }),
+    bed = L.AwesomeMarkers.icon({
+    icon: 'bed',
+    prefix: 'fa',
+    markerColor: 'cadetblue'
+  }),
+    library = L.AwesomeMarkers.icon({
+    icon: 'book',
+    prefix: 'glyphicon',
+    markerColor: 'orange'
+  });
 
 var ICONS = {
     "Université": ecole,
@@ -61,9 +61,6 @@ var ICONS = {
     "Bibliothèque": library,
     "Bar":bar
 };
-
-
-
 
 
 var pois = [];

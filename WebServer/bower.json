@@ -30,7 +30,8 @@
   "dependencies": {
     "bootstrap": "3.3.2",
     "leaflet": "0.7.3",
-    "components-font-awesome": "~4.3.0"
+    "components-font-awesome": "4.3.0",
+    "Leaflet.awesome-markers": "2.0.2"
   },
   "repository": {
     "type": "git",
