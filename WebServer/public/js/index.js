@@ -1,12 +1,5 @@
 loadEntities();
 buildEmptyPanel("#mainContent");
- /*showModalParameters('#mainContent');
- showModalAbout('#mainContent');
- showModalHelp('#mainContent');
- */
- $('#popParam').modals();
- $('#popAbout').modals();
- $('#popHelp').modals();
              
  //Code inside modals
  $('#langage').on('change', function() {
