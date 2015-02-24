@@ -13,37 +13,37 @@ var ecole = L.AwesomeMarkers.icon({
     icon: 'education',
     prefix: 'glyphicon',
     markerColor: 'blue'
-})
-tram = L.AwesomeMarkers.icon({
-    icon: 'subway',
-    prefix: 'fa',
-    markerColor: 'green'
 }),
+    tram = L.AwesomeMarkers.icon({
+        icon: 'subway',
+        prefix: 'fa',
+        markerColor: 'green'
+    }),
     commerce = L.AwesomeMarkers.icon({
-    icon: 'shopping-cart',
-    prefix: 'fa',
-    markerColor: 'red'
-}),
+        icon: 'shopping-cart',
+        prefix: 'fa',
+        markerColor: 'red'
+    }),
     food = L.AwesomeMarkers.icon({
-    icon: 'cutlery',
-    prefix: 'fa',
-    markerColor: 'purple'
-}),
+        icon: 'cutlery',
+        prefix: 'fa',
+        markerColor: 'purple'
+    }),
     bar = L.AwesomeMarkers.icon({
-    icon: 'beer',
-    prefix: 'fa',
-    markerColor: 'darkgreen'
-}),
+        icon: 'beer',
+        prefix: 'fa',
+        markerColor: 'darkgreen'
+    }),
     bed = L.AwesomeMarkers.icon({
-    icon: 'bed',
-    prefix: 'fa',
-    markerColor: 'cadetblue'
-}),
+        icon: 'bed',
+        prefix: 'fa',
+        markerColor: 'cadetblue'
+    }),
     library = L.AwesomeMarkers.icon({
-    icon: 'book',
-    prefix: 'glyphicon',
-    markerColor: 'orange'
-});
+        icon: 'book',
+        prefix: 'glyphicon',
+        markerColor: 'orange'
+    });
 
 var ICONS = {
     "Université": ecole,

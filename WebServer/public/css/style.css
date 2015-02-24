@@ -4,8 +4,6 @@ html {
     font-size: 62.5%;
 }
 .zoneAddComment{
-    margin-left: 5%;
-    margin-right: 5%;
 }
 .modal-footer{
     text-align: center;    
@@ -236,6 +234,7 @@ body {
     height: 400px;
     width: 700px;
     border-radius : 6px;
+    overflow: scroll;
 }
 
 .commentBtn {
