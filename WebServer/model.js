@@ -59,7 +59,8 @@ var Sensors_data = new Schema({
 var Mesure = new Schema({
     id: ObjectId,
     date: {type: Date, default: Date.now},
-    value: String
+    value: Number,
+    unite: String
 });
 
 var Comment = new Schema({
