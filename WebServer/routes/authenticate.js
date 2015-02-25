@@ -36,5 +36,5 @@ exports.whoami = function(request, res) {
 exports.logout = function(request, response) {
     request.session.admin = null;
     request.session.user = null;
-    response.redirect('/');
+    response.redirect('/admin');
 };

@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Droits</title>
@@ -25,27 +20,23 @@ and open the template in the editor.
         <div class="row">
             <div class="col-md-4">
                 <div id="btn_onoff" class="btn-group btn-toggle"> 
-                    <button id="btn_on" class="btn btn-lg btn-default">ON</button>
-                    <button id="btn_off" class="btn btn-lg btn-primary active">OFF</button>
+                    <button id="btn_on" class="btn btn-lg btn-default" data-target="#myModal" data-toggle="modal">ON</button>
+                    <button id="btn_off" class="btn btn-lg btn-primary active" data-target="#myModal" data-toggle="modal">OFF</button>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div id="div_modal" class="col-md-5">
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="div_modal_title"></h4>
-                            </div>
-                            <div id="div_modal_body" class="modal-body">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                            </div>
-                        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="div_modal_title"></h4>
+                    </div>
+                    <div id="div_modal_body" class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>
