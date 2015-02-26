@@ -1,0 +1,4 @@
+{first_name: "nicolas",name: "husson",login: "nicolas",password: "password",entity: [stendhal_id]}
+{first_name: "thomas",name: "nunes",login: "thomas",password: "password",entity: [iae_id]}
+{first_name: "simon",name: "planes",login: "simon",password: "password",entity: [polytech_id]}
+{first_name: "laurene",name: "guelorgette",login: "laurene",password: "password",entity: [polytech_id]}
