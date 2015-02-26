@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SmartCampus | Ajout de capteurs LoRa</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h1>Ajout de capteurs</h1>
+        <form class="form-horizontal">
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="sensorsType">Type de capteur</label>
+                <div class="col-md-4">
+                    <select id="sensorsType" name="sensorsType" class="form-control">
+                        <option value="humidite">Humidité</option>
+                        <option value="airQualite">Qualité de l'air</option>
+                        <option value="temperature">Température</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="latitude">Latitude</label>  
+                <div class="col-md-4">
+                    <input id="latitude" name="latitude" type="text" placeholder="4.2" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="longitude">Longitude</label>  
+                <div class="col-md-4">
+                    <input id="longitude" name="longitude" type="text" placeholder="4.2" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="aeskey">Clef AES</label>  
+                <div class="col-md-4">
+                    <input id="aeskey" name="aeskey" type="text" placeholder="" class="form-control input-md">
+                    <span class="help-block">128 ou 192 bits</span>  
+                </div>
+            </div>
+            
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="identifier">Identifier</label>  
+                <div class="col-md-4">
+                    <input id="sensorsId" name="Identifier" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="validate"></label>
+                <div class="col-md-4">
+                    <button id="validate" name="validate" class="btn btn-info">Valider</button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </body>
+</html>

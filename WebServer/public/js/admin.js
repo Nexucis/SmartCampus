@@ -12,7 +12,7 @@ function initialize() {
     current_entity = null;
     current_entity_name = null;
     build_menu();
-    var menus = ['configuration', 'comments', 'rights', 'events'];
+    var menus = ['configuration', 'comments', 'rights', 'events', 'sensors'];
     $(menus).each(function(index, menu) {
         $("#menu_" + menu).click(function() {
             displayLeftPanel(menu);
