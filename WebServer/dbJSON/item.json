@@ -1,0 +1,5 @@
+{name: "Salle de cours 42",description: "Salle de cours 42",show: false,Sensors_data: ["captor1"]}
+{name: "Bureau",description: "Bureau de Didier Donsez",show: false,Sensors_data: ["PolytechBureauDDhumidite"]}
+{name: "Salle Framboisière",description: "Salle Framboisière",show: false,Sensors_data: ["RUFramboisierehumidite"]}
+{name: "CROUS Dortoir",description: "Dortoir de Mr Bidois Morgan",show: false,Sensors_data: ["CROUSDortoirChambreMBairQualite"]}
+

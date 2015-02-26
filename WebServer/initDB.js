@@ -50,3 +50,29 @@ sensors.save(function (err) {
   if (err) { throw err; }
   console.log('RUFranboise add with success !');
 });
+
+sensors = new Sensors_dataModel({
+	type: "humidite",
+        identifiant: "PolytechBureauDDhumidite"
+});
+
+sensors.save(function (err) {
+  if (err) { throw err; }
+  console.log('PolytechBureauDDhumidite add with success !');
+});
+
+sensors = new Sensors_dataModel({
+	type: "airQualite",
+        identifiant: "CROUSDortoirChambreMBairQualite"
+});
+
+sensors.save(function (err) {
+  if (err) { throw err; }
+  console.log('CROUSDortoirChambreMBairQualite add with success !');
+});
+
+//initialisation des items
+
+var item = new ItemModel({
+	  
+});
