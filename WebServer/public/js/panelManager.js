@@ -391,7 +391,6 @@ function refreshEntity(entityId) {
     var indexEntity;
     //Recupere l'index de l'entite dans le tableau
     while (i < entitiesArray.length && !isFound) {
-        console.log("boucle " + i);
         if (entitiesArray[i]._id === entityId) {
             isFound = true;
             indexEntity = i;
@@ -596,7 +595,7 @@ function buildPanel(objElem) {
     var entity = objElem;
     entity.name = translate(entity.name);
     entity.description = translate(entity.description);
-    console.log(objElem);
+    //console.log(objElem);
 
     /* Clean le panel */
     cleanChildOfNodeID("tabsPanel");

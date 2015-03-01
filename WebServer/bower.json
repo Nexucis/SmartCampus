@@ -31,7 +31,9 @@
     "bootstrap": "3.3.2",
     "leaflet": "0.7.3",
     "components-font-awesome": "4.3.0",
-    "Leaflet.awesome-markers": "2.0.2"
+    "Leaflet.awesome-markers": "2.0.2",
+    "L.EasyButton": "*",
+    "jqueryui": "~1.11.3"
   },
   "repository": {
     "type": "git",

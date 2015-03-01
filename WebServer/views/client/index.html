@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
 menu template for interface
- * SmartCampus
- *  ©SmartCampus 2014 https://github.com/thomasNDS/SmartCampus2014
- *  License MIT
+* SmartCampus
+*  ©SmartCampus 2014 https://github.com/thomasNDS/SmartCampus2014
+*  License MIT
 -->
 <html>
     <head>
@@ -12,67 +12,107 @@ menu template for interface
         <meta name="viewport" content="width=device-width">
         <link rel="icon" type="image/png" href="/images/logo_black.png" />
 
-	       
+
 
         <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/bower_components/components-font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
         <link href="/bower_components/leaflet/dist/leaflet.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet" type="text/css">
-        
+
         <script src="/bower_components/jquery/dist/jquery.min.js"></script>
         <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="/bower_components/leaflet/dist/leaflet.js"></script>
         <script src="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
-                
-        
+
+
         <script type="text/javascript" src="/js/translate.js"></script>
         <script type="text/javascript" src="/js/screenManagement.js"></script>
         <script type="text/javascript" src="/js/panelManager.js"></script>
         <script type="text/javascript" src="/js/loader.js"></script>
-        
+        <script type="text/javascript" src="/bower_components/L.EasyButton/easy-button.js"></script>
+        <script type="text/javascript" src="/bower_components/jqueryui/jquery-ui.min.js"></script>
+
+        <style>
+            #panel{
+                background-color: rgba(0,0,0,0.8);
+                position: absolute;
+                margin-top: 50px;
+                width: 436px;
+                height: 94%;
+                overflow-y: auto;
+               
+
+            }
+            #conteneur{
+                color:white;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+            .line-separator{
+                height:1px;
+                background:white;
+                border-bottom:1px solid white;
+            }
+        </style>
+
+
     </head>
     <body>
         <div id="wrapper">
-           <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-              <div class="container-fluid">
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#" data-target="#popParam" data-toggle="modal"><i class="icon-white fa fa-cog logoFont"></i> <!--Paramètres--></a></li>
+                            <li><a href="#" data-target="#popAbout" data-toggle="modal"><i class="icon-white fa fa-info-circle logoFont"></i> <!--A Propos--> </a></li>
+                            <li><a href="#" data-target="#popHelp" data-toggle="modal"><i class="icon-white fa fa-question-circle logoFont"></i> <!--Aide--> </a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-white fa fa-plus-square logoFont">
+                                        <span class="caret"></span>
+                                    </i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/covoiturage.html">Covoiturage</a></li>
+                                    <li><a href="/casierNFC.html">Smart self service</a></li>
+                                    <li><a href="augmentedReality.html">Réalité augmentée</a></li>
+                                </ul>
+                            </li>
+                        </ul>                    
+                    </div>
                 </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                  <ul class="nav navbar-nav">
-                    <li><a href="#" data-target="#popParam" data-toggle="modal"><i class="icon-white fa fa-cog logoFont"></i> <!--Paramètres--></a></li>
-                    <li><a href="#" data-target="#popAbout" data-toggle="modal"><i class="icon-white fa fa-info-circle logoFont"></i> <!--A Propos--> </a></li>
-                    <li><a href="#" data-target="#popHelp" data-toggle="modal"><i class="icon-white fa fa-question-circle logoFont"></i> <!--Aide--> </a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-white fa fa-plus-square logoFont">
-                        <span class="caret"></span>
-                        </i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/covoiturage.html">Covoiturage</a></li>
-                            <li><a href="/casierNFC.html">Smart self service</a></li>
-                            <li><a href="augmentedReality.html">Réalité augmentée</a></li>
-                        </ul>
-                    </li>
-                  </ul>                    
-                </div>
-              </div>
             </nav>
 
             <div id="map-canvas"></div> <!--balise qui affiche la carte-->
+            <!--Menu lateral-->
+            <div id="panel">
+                <div id="conteneur">
+                    <div class="titlePanel">
+                        <h3 id="informationTitle"></h3>
+                    </div>
+                    <div class="line-separator"></div>
+                    <div class="tabbable tabs-left">
+                        <ul id="tabsPanel" class="nav nav-tabs">
+                        </ul>
+                        <div id="contentTabs" class="tab-content"></div>
+                    </div>
+                </div>
+            </div>
+            
 
-            <!--DIV QUI CONTIENDRA L'UI-->
+            <!--DIV QUI CONTIENDRA L'UI
             <div id="mainContent" class="container-fluid">
-                <!-- Tout le contenu dans une row -->
-                
+
                 <div id="informationPanel">
                     <div class="titlePanel">
                         <h3 id="informationTitle"></h3>
@@ -84,7 +124,7 @@ menu template for interface
                         <div id="contentTabs" class="tab-content"></div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <img id="logo" src="/images/logo_SmartCampus_transparent.svg" alt="SmartCampus" />
 
@@ -94,10 +134,10 @@ menu template for interface
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Paramètre</h4>
+                        <h4 class="modal-title" id="myModalLabel">Paramètre</h4>
                     </div>
                     <div class="modal-body text-center" >
-                       <form>
+                        <form>
                             <div class="form-group">
                                 <label id="langage_info" for="langage">Langue</label><br>
                                 <select name="langage" id="langage">
@@ -107,25 +147,25 @@ menu template for interface
                                     <option value="ru">русский</option>
                                 </select>
                             </div>
-                           <div class="form-group">
-                            <label>Plein écran</label><br>
-                               <button id="btnFullScreen" class="btn btn-primary" onclick="manageFullScreen(document.documentElement);"><i class="fa icon-white fa-arrows-alt logoFont"></i> </button>      
-                           </div>
+                            <div class="form-group">
+                                <label>Plein écran</label><br>
+                                <button id="btnFullScreen" class="btn btn-primary" onclick="manageFullScreen(document.documentElement);"><i class="fa icon-white fa-arrows-alt logoFont"></i> </button>      
+                            </div>
                         </form>                
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" data-dismiss="modal">Fermer</button>
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
-        
+
         <div class="modal fade" id="popAbout" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">À propos</h4>
+                        <h4 class="modal-title" id="myModalLabel">À propos</h4>
                     </div>
                     <div class="modal-body" >
                         L'équipe SmartCampus est formée de 5 étudiants de dernière année à Polytech'Grenoble, en filière RICM. Le but de cette application est de permettre à l'utilisateur d'accéder à plusieurs types d'informations :
@@ -137,17 +177,17 @@ menu template for interface
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" data-dismiss="modal">Fermer</button>
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
-        
-        
+
+
         <div class="modal fade" id="popHelp" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Aide</h4>
+                        <h4 class="modal-title" id="myModalLabel">Aide</h4>
                     </div>
                     <div class="modal-body" >
                         Cet application offre 2 modes de fonctionnement :
@@ -158,18 +198,18 @@ menu template for interface
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info" data-dismiss="modal">Fermer</button>
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
-        
-        
-        
-        
+
+
+
+
         <!--Load script from the map and the interactions -->
         <script type="text/javascript" src="/js/map-osm.js"></script>
         <script type="text/javascript" src="/js/index.js"></script>
-         
-        
+
+
     </body>
 </html>

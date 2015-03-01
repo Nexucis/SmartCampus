@@ -97,3 +97,25 @@ L.tileLayer(mapboxUrl, {
 }).addTo(map);
 
 L.control.layers(null,overlays).addTo(map);
+L.easyButton('fa-twitter', displayPannelTwitter,'Twitter of UJF')
+L.easyButton('fa-sun-o', displayPannelWeather,"Display the weather")
+L.easyButton('fa-info', displayPannelInfo,'Display the sensor information')
+
+
+$('#panel').hide();
+
+function displayPannelTwitter(){
+    $("#panel").toggle("slide");
+    
+}
+
+function displayPannelWeather(){
+    $("#panel").toggle("slide");
+}
+
+
+function displayPannelInfo(){
+    $("#panel").toggle("slide");
+}
+
+
