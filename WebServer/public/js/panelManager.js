@@ -563,29 +563,19 @@ function buildSchedulePanel(arrayHours) {
  * Build un onglet du panel d'information
  * @param {type} title : Titre de l'onglet
  * @param {type} content : Contenu
- * @param {type} i : index de l'onglet
  * @returns {undefined}
  */
-function buildTab(title, content, i) {
-    (function(index) {
-        var tabContent = "";
-        var tabTitle = "";
-        if (index !== 0) {
-            tabTitle = "<li><a href=\"#tabPan" + index + "\" data-toggle=\"tab\">" + title + "</a></li>";
-            tabContent = "<div id=\"tabPan" + index + "\" class=\"tab-pane\">";
-        } else {
-            tabTitle = "<li class=\"active\"><a href=\"#tabPan" + index + "\" data-toggle=\"tab\">" + title + "</a></li>";
-            tabContent = "<div id=\"tabPan" + index + "\" class=\"tab-pane active\">";
-        }
-        tabContent += content;
-        tabContent += "</div>";
-        $("#tabsPanel").append(tabTitle);
-        $("#contentTabs").append(tabContent);
-//        index++;
-    })(i);
-    console.log(title + "++");
-    indexTab++;
+function buildInfoPanel(title, content){
+        var newTitle = title.replace(" ","");
+        var titleDiv = "<h2  onClick=\"$('#"+newTitle+"').toggle('blind')\">"+title+"</h2>";
+        var contentDiv = "<div id=\""+newTitle+"\">"+content+"</div> "
+        $("#contentPanel").append(titleDiv);
+        $("#contentPanel").append(contentDiv);
+        $("#"+newTitle).hide();
 }
+
+
+
 
 /*
  * Fonction qui va remplir le panel d'information de l'entité
@@ -598,9 +588,7 @@ function buildPanel(objElem) {
     //console.log(objElem);
 
     /* Clean le panel */
-    cleanChildOfNodeID("tabsPanel");
-    cleanChildOfNodeID("contentTabs");
-
+    cleanChildOfNodeID("contentPanel");
     //Titre du panel info
     $("#informationTitle").html(objElem.name);
 
@@ -611,7 +599,7 @@ function buildPanel(objElem) {
         descriptionContent += buildVotePanelQueue(objElem._id);
     }
 
-    buildTab("Description", descriptionContent, indexTab);
+    buildInfoPanel("Description", descriptionContent);
 
     //Onglet Horaire
     var scheduleContent = "";
@@ -619,7 +607,8 @@ function buildPanel(objElem) {
     if (schedule.length !== 0) {
         var arraySchedule = JSON.parse(schedule);
         scheduleContent = buildSchedulePanel(arraySchedule);
-        buildTab("Horaire", scheduleContent, indexTab);
+        buildInfoPanel("Horaire", scheduleContent);
+        
     }
 
     objElem.items.forEach(function(itemId) {
@@ -629,7 +618,6 @@ function buildPanel(objElem) {
             async: false,
             url: "/api/item/" + itemId,
             success: function(data) {
-                console.dir(data.payload);
                 itemLoaded = data.payload;
             }
         });
@@ -672,7 +660,6 @@ function buildPanel(objElem) {
                         async: false,
                         url: "/api/sensors_data/" + sensorId,
                         success: function(data) {
-                            console.dir(data.payload);
                             sensorLoaded = data.payload;
                         },
                         error: function(err) {
@@ -686,7 +673,6 @@ function buildPanel(objElem) {
                         async: false,
                         url: "/api/mesure/" + mesureId,
                         success: function(data) {
-                            console.dir(data.payload);
                             mesure = data.payload;
                         },
                         error: function(err) {
@@ -705,8 +691,7 @@ function buildPanel(objElem) {
                 sensorContent += "</div>";
             }
             itemContent += sensorContent;
-
-            buildTab(itemLoaded.name, itemContent, indexTab);
+            buildInfoPanel(itemLoaded.name, itemContent);
         }
     });
 
@@ -733,7 +718,7 @@ function buildPanel(objElem) {
         });
 
         eventContent += "</div>";
-        buildTab("Evenement", eventContent, indexTab);
+        buildInfoPanel("Evenement", eventContent);
     }
 
     //Onglet Com ///////////////
@@ -761,11 +746,7 @@ function buildPanel(objElem) {
     commentContent += "<textarea id='commentArea' class='form-control commentArea' placeholder='Commentaire'></textarea> ";
     commentContent += "<div class=\"commentBtn\"><button class=\"btn btn-primary\" onclick=\"addComment('" + objElem._id + "','" + $("#commentArea").val() + "'" + ")\">Poster</button></div>";
     commentContent += "</div></div>";
-    buildTab("Avis", commentContent, indexTab);
-
-    //Panel totalement construit, on affiche !
-    $("#informationPanel").css("display", "block");
-    indexTab = 0;
+    buildInfoPanel("Avis", commentContent);
 }
 
 /**

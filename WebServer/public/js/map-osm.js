@@ -81,6 +81,10 @@ $.getJSON('/api/entity/',
         .addTo(map)
         .on('click', function (e) {
             buildPanel(value);
+            if(!$("#panelPOI").is(":visible"))
+                displayPannelInfoPOI();
+            
+            
         })
         .addTo(poiLayer);
     });
@@ -98,24 +102,45 @@ L.tileLayer(mapboxUrl, {
 
 L.control.layers(null,overlays).addTo(map);
 L.easyButton('fa-twitter', displayPannelTwitter,'Twitter of UJF')
-L.easyButton('fa-sun-o', displayPannelWeather,"Display the weather")
-L.easyButton('fa-info', displayPannelInfo,'Display the sensor information')
+L.easyButton('fa-sun-o', displayPannelInfoSensor,"Display the sensor informations")
+L.easyButton('fa-info', displayPannelInfoPOI,'Display the POI information')
 
-
-$('#panel').hide();
+//gestion du panel d'affichage des info
+$('#panelPOI').hide();
+$('#panelTwitter').hide();
+$('#panelInfoSensors').hide();
 
 function displayPannelTwitter(){
-    $("#panel").toggle("slide");
+    if($("#panelInfoSensors").is(":visible"))
+        $("#panelInfoSensors").toggle("slide",{ direction: "right" });
+    
+    if($("#panelPOI").is(":visible"))
+        $("#panelPOI").toggle("slide",{ direction: "right" });
+    
+    $("#panelTwitter").toggle("slide",{ direction: "right" });
+    
     
 }
 
-function displayPannelWeather(){
-    $("#panel").toggle("slide");
+function displayPannelInfoSensor(){
+    if($("#panelPOI").is(":visible"))
+        $("#panelPOI").toggle("slide",{ direction: "right" });
+    
+    if($("#panelTwitter").is(":visible"))
+        $("#panelTwitter").toggle("slide",{ direction: "right" });
+    
+    $("#panelInfoSensors").toggle("slide",{ direction: "right" });
 }
 
 
-function displayPannelInfo(){
-    $("#panel").toggle("slide");
+function displayPannelInfoPOI(){
+    if($("#panelTwitter").is(":visible"))
+        $("#panelTwitter").toggle("slide",{ direction: "right" });
+    
+    if($("#panelInfoSensors").is(":visible"))
+        $("#panelInfoSensors").toggle("slide",{ direction: "right" });
+
+    $("#panelPOI").toggle("slide",{ direction: "right" });
 }
 
 

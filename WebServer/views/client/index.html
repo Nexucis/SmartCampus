@@ -34,14 +34,15 @@ menu template for interface
         <script type="text/javascript" src="/bower_components/jqueryui/jquery-ui.min.js"></script>
 
         <style>
-            #panel{
+            .panel{
                 background-color: rgba(0,0,0,0.8);
                 position: absolute;
                 margin-top: 50px;
                 width: 436px;
-                height: 94%;
+                height: 92%;
+                right: 0px;
                 overflow-y: auto;
-               
+
 
             }
             #conteneur{
@@ -95,36 +96,21 @@ menu template for interface
 
             <div id="map-canvas"></div> <!--balise qui affiche la carte-->
             <!--Menu lateral-->
-            <div id="panel">
+            <div id="panelPOI" class="panel">
                 <div id="conteneur">
                     <div class="titlePanel">
                         <h3 id="informationTitle"></h3>
                     </div>
                     <div class="line-separator"></div>
-                    <div class="tabbable tabs-left">
-                        <ul id="tabsPanel" class="nav nav-tabs">
-                        </ul>
-                        <div id="contentTabs" class="tab-content"></div>
-                    </div>
+                    <div id="contentPanel"></div>
+                    
                 </div>
             </div>
             
+            <div id="panelTwitter" class="panel"></div>
+            <div id="panelInfoSensors" class="panel"></div>
+            
 
-            <!--DIV QUI CONTIENDRA L'UI
-            <div id="mainContent" class="container-fluid">
-
-                <div id="informationPanel">
-                    <div class="titlePanel">
-                        <h3 id="informationTitle"></h3>
-                        <button class="btn btn-primary" onclick="closePanel()">x</button>
-                    </div>
-                    <div class="tabbable tabs-left">
-                        <ul id="tabsPanel" class="nav nav-tabs">
-                        </ul>
-                        <div id="contentTabs" class="tab-content"></div>
-                    </div>
-                </div>
-            </div>-->
 
             <img id="logo" src="/images/logo_SmartCampus_transparent.svg" alt="SmartCampus" />
 
