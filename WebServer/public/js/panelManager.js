@@ -186,7 +186,7 @@ function loadComById(id) {
         async: false,
         url: "/api/comment/" + id,
         success: function(data) {
-//            console.dir(data.payload[0]);
+            //            console.dir(data.payload[0]);
             com = data.payload[0];
         },
         error: function(err) {
@@ -255,7 +255,7 @@ function loadSchedule(id) {
         async: false,
         url: "/api/entity/" + id,
         success: function(data) {
-//            console.dir(data.payload[0]);
+            //            console.dir(data.payload[0]);
             schedule = data.payload[0].schedule;
         },
         error: function(err) {
@@ -343,7 +343,7 @@ function makeVote(idEntity, vote) {
         },
         url: "/vote/vote_ru2",
         success: function(data) {
-//            console.log("vote effectué\n" + data);
+            //            console.log("vote effectué\n" + data);
         },
         error: function(err) {
             console.log(er);
@@ -369,7 +369,7 @@ function getVoteValue(idEntity) {
             idEntity: idEntity
         },
         success: function(data) {
-//            console.log("vote récupéré = " + data);
+            //            console.log("vote récupéré = " + data);
             vote = data;
         },
         error: function(err) {
@@ -429,7 +429,7 @@ function changeMaxHeightContentTabs(parentNode) {
     var height = parseInt($(parentNode).css("height"));
     console.log("maj heightContent " + height);
     var maxHeightContentTab = height * (10 / 100);
-//    $("#contentTabs").css("max-height", maxHeightContentTab);
+    //    $("#contentTabs").css("max-height", maxHeightContentTab);
 }
 
 /*
@@ -566,12 +566,12 @@ function buildSchedulePanel(arrayHours) {
  * @returns {undefined}
  */
 function buildInfoPanel(title, content){
-        var newTitle = title.replace(" ","");
-        var titleDiv = "<h2  onClick=\"$('#"+newTitle+"').toggle('blind')\">"+title+"</h2>";
-        var contentDiv = "<div id=\""+newTitle+"\">"+content+"</div> "
-        $("#contentPanel").append(titleDiv);
-        $("#contentPanel").append(contentDiv);
-        $("#"+newTitle).hide();
+    var newTitle = title.replace(" ","");
+    var titleDiv = "<h3 class=\"titleInfoPanel\"  onClick=\"$('#"+newTitle+"').toggle('blind')\">"+title+"</h3>";
+    var contentDiv = "<div id=\""+newTitle+"\">"+content+"</div> "
+    $("#contentPanel").append(titleDiv);
+    $("#contentPanel").append(contentDiv);
+    $("#"+newTitle).hide();
 }
 
 
@@ -585,7 +585,6 @@ function buildPanel(objElem) {
     var entity = objElem;
     entity.name = translate(entity.name);
     entity.description = translate(entity.description);
-    //console.log(objElem);
 
     /* Clean le panel */
     cleanChildOfNodeID("contentPanel");
@@ -608,7 +607,6 @@ function buildPanel(objElem) {
         var arraySchedule = JSON.parse(schedule);
         scheduleContent = buildSchedulePanel(arraySchedule);
         buildInfoPanel("Horaire", scheduleContent);
-        
     }
 
     objElem.items.forEach(function(itemId) {
@@ -698,6 +696,7 @@ function buildPanel(objElem) {
     //Onglet Event
     if (objElem.events.length > 0) {
         var eventContent = "<div>";
+        var nbrOfEvent = 0;
         objElem.events.forEach(function(eventId) {
             var eventLoaded;
             jQuery.ajax({
@@ -711,14 +710,16 @@ function buildPanel(objElem) {
                     console.log(err);
                 }
             });
-            if (eventLoaded.description !== "") {
-                var event = "<div>" + eventLoaded.description + "</div>";
+            if (eventLoaded.description !== "" && nbrOfEvent != 10) {
+                var tmp = eventLoaded.description.split("--");
+                var event = "<p><b>" + tmp[0]+"</b> : "+tmp[1] + "</p><br>";
                 eventContent += event;
+                nbrOfEvent++;
             }
         });
 
         eventContent += "</div>";
-        buildInfoPanel("Evenement", eventContent);
+        buildInfoPanel("Évènement", eventContent);
     }
 
     //Onglet Com ///////////////
@@ -741,7 +742,7 @@ function buildPanel(objElem) {
         commentContent += "<div>" + date.toLocaleDateString() + " : " + com.value + "</div>";
     });
     //Ajout
-    commentContent += '<hr/><div class="zoneAddComment"><h4>Ajouter un commentaire</h4>';
+    commentContent += '<div class="line-separator"></div><div class="zoneAddComment"><h4>Ajouter un commentaire</h4>';
     commentContent += '<input id="commentPseudo" class="form-control addPseudo" placeholder="Pseudo"><br/>';
     commentContent += "<textarea id='commentArea' class='form-control commentArea' placeholder='Commentaire'></textarea> ";
     commentContent += "<div class=\"commentBtn\"><button class=\"btn btn-primary\" onclick=\"addComment('" + objElem._id + "','" + $("#commentArea").val() + "'" + ")\">Poster</button></div>";
@@ -757,16 +758,16 @@ function buildPanel(objElem) {
  */
 function buildEmptyPanel(htmlNodeToAppend) {
     var panel = "<div id=\"informationPanel\">" +
-            "<div class=\"titlePanel\">" +
-            "<h3 id=\"informationTitle\"></h3>" +
-            "<button class=\"btn btn-primary\" onclick=\"closePanel()\">x</button>" +
-            "</div>" +
-            "<div class=\"tabbable tabs-left\">" +
-            "<ul id=\"tabsPanel\" class=\"nav nav-tabs\">" +
-            "</ul>" +
-            "<div id=\"contentTabs\" class=\"tab-content\"></div>" +
-            "</div>" +
-            "</div>";
+        "<div class=\"titlePanel\">" +
+        "<h3 id=\"informationTitle\"></h3>" +
+        "<button class=\"btn btn-primary\" onclick=\"closePanel()\">x</button>" +
+        "</div>" +
+        "<div class=\"tabbable tabs-left\">" +
+        "<ul id=\"tabsPanel\" class=\"nav nav-tabs\">" +
+        "</ul>" +
+        "<div id=\"contentTabs\" class=\"tab-content\"></div>" +
+        "</div>" +
+        "</div>";
     $(htmlNodeToAppend).append(panel);
 }
 
@@ -785,16 +786,16 @@ function cleanChildOfNodeID(parentNode) {
  */
 function showModalParameters(htmlNodeToAppend) {
     var modalParam = "<div id=\"popParam\" class=\"modal hide fade\">" +
-            "<div class=\"modal-header\"> <a class=\"close\" data-dismiss=\"modal\">×</a>" +
-            "<h3 style=\"text-align:center\">Paramètres</h3>" +
-            "</div>" +
-            "<div id=\"popUpContent\" class=\"modal-body\">" +
-            "Voulez-vous l'afficher ?" +
-            "</div>" +
-            ' <div  class="modal-footer"> ' +
-            '<a class="btn btn-success" data-dismiss="modal">Fermer </a>' +
-            ' </div>' +
-            "</div>";
+        "<div class=\"modal-header\"> <a class=\"close\" data-dismiss=\"modal\">×</a>" +
+        "<h3 style=\"text-align:center\">Paramètres</h3>" +
+        "</div>" +
+        "<div id=\"popUpContent\" class=\"modal-body\">" +
+        "Voulez-vous l'afficher ?" +
+        "</div>" +
+        ' <div  class="modal-footer"> ' +
+        '<a class="btn btn-success" data-dismiss="modal">Fermer </a>' +
+        ' </div>' +
+        "</div>";
     $(htmlNodeToAppend).append(modalParam);
 }
 
@@ -803,16 +804,16 @@ function showModalParameters(htmlNodeToAppend) {
  */
 function showModalAbout(htmlNodeToAppend) {
     var modalAbout = "<div id=\"popAbout\" class=\"modal hide fade\">" +
-            "<div class=\"modal-header\"> <a class=\"close\" data-dismiss=\"modal\">×</a>" +
-            "<h3 style=\"text-align:center\">A propos</h3>" +
-            "</div>" +
-            "<div id=\"popUpContent\" class=\"modal-body\">" +
-            "Voulez-vous l'afficher ?" +
-            "</div>" +
-            ' <div  class="modal-footer"> ' +
-            '<a class="btn btn-success" data-dismiss="modal">Fermer </a>' +
-            ' </div>' +
-            "</div>";
+        "<div class=\"modal-header\"> <a class=\"close\" data-dismiss=\"modal\">×</a>" +
+        "<h3 style=\"text-align:center\">A propos</h3>" +
+        "</div>" +
+        "<div id=\"popUpContent\" class=\"modal-body\">" +
+        "Voulez-vous l'afficher ?" +
+        "</div>" +
+        ' <div  class="modal-footer"> ' +
+        '<a class="btn btn-success" data-dismiss="modal">Fermer </a>' +
+        ' </div>' +
+        "</div>";
     $(htmlNodeToAppend).append(modalAbout);
 }
 
@@ -821,15 +822,15 @@ function showModalAbout(htmlNodeToAppend) {
  */
 function showModalHelp(htmlNodeToAppend) {
     var modalHelp = "<div id=\"popHelp\" class=\"modal hide fade\">" +
-            "<div class=\"modal-header\"> <a class=\"close\" data-dismiss=\"modal\">×</a>" +
-            "<h3 style=\"text-align:center\">Aide</h3>" +
-            "</div>" +
-            "<div id=\"popUpContent\" class=\"modal-body\">" +
-            "Voulez-vous l'afficher ?" +
-            "</div>" +
-            ' <div  class="modal-footer"> ' +
-            '<a class="btn btn-success" data-dismiss="modal">Fermer </a>' +
-            ' </div>' +
-            "</div>";
+        "<div class=\"modal-header\"> <a class=\"close\" data-dismiss=\"modal\">×</a>" +
+        "<h3 style=\"text-align:center\">Aide</h3>" +
+        "</div>" +
+        "<div id=\"popUpContent\" class=\"modal-body\">" +
+        "Voulez-vous l'afficher ?" +
+        "</div>" +
+        ' <div  class="modal-footer"> ' +
+        '<a class="btn btn-success" data-dismiss="modal">Fermer </a>' +
+        ' </div>' +
+        "</div>";
     $(htmlNodeToAppend).append(modalHelp);
 }

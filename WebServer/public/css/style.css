@@ -1,24 +1,17 @@
+/*General information*/
+
 html {
     background: black;
     color: white;
     font-size: 62.5%;
 }
-.zoneAddComment{
-}
-.modal-footer{
-    text-align: center;    
-}
-
-.addPseudo{
-    margin: 3px;
-    width: 50%;
-}
-.commentArea{
-    width: 50%;
-}
 body {
     margin: 0;
     padding: 0;
+}
+
+.modal-footer{
+    text-align: center;    
 }
 
 #backgroundVideo{
@@ -43,172 +36,55 @@ body {
     max-width: 100%;
     width: 100%;
 }
-#popUpFooter {
-    text-align: center;
+
+@media screen and (max-width: 640px) {
+    #logo {
+        position:fixed;
+        bottom: 10px;
+        left: 5px;
+        height: 30px;
+    }
 }
 
+#logo{
+    position:fixed;
+    bottom: 20px;
+    left: 5px;
+    height: 50px;
+}
+
+/*Comment zone*/
+.zoneAddComment{
+}
+.addPseudo{
+    width: 80%;
+}
+.commentArea{
+    width: 80%;
+}
+.commentBtn {
+    margin: 3px;
+    text-align: left;
+}
+
+/*popup*/
 #popUpTitle {
     text-align: center;
 }
 
+}#popUpContent{
+    text-align: center;
+}
+
+#popUpFooter {
+    text-align: center;
+}
 #popUpInfos {
     width: 60%;
     top: 20%;
     left: 20%;
     margin-top: 0%;
     margin-left: 0%;
-}
-
-#map-canvas {
-    position: absolute;
-    margin-top: 50px;
-    width: 100%;
-    height: 94%;
-}
-
-#map-canvas img { max-width: none; }
-
-//Ajout pour un offset vertical
-.voffset  { margin-top: 2px; }
-.voffset1 { margin-top: 5px; }
-.voffset2 { margin-top: 10px; }
-.voffset3 { margin-top: 15px; }
-.voffset4 { margin-top: 30px; }
-.voffset5 { margin-top: 40px; }
-.voffset6 { margin-top: 60px; }
-.voffset7 { margin-top: 80px; }
-.voffset8 { margin-top: 100px; }
-.voffset9 { margin-top: 150px; }
-
-
-/* custom inclusion of right, left and below tabs */
-
-.tabs-below > .nav-tabs,
-.tabs-right > .nav-tabs,
-.tabs-left > .nav-tabs {
-    border-bottom: 0;
-}
-
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-    display: none;
-}
-
-.tab-content > .active,
-.pill-content > .active {
-    display: block;
-}
-
-.tabs-below > .nav-tabs {
-    border-top: 1px solid #ddd;
-}
-
-.tabs-below > .nav-tabs > li {
-    margin-top: -1px;
-    margin-bottom: 0;
-}
-
-.tabs-below > .nav-tabs > li > a {
-    -webkit-border-radius: 0 0 4px 4px;
-    -moz-border-radius: 0 0 4px 4px;
-    border-radius: 0 0 4px 4px;
-}
-
-.tabs-below > .nav-tabs > li > a:hover,
-.tabs-below > .nav-tabs > li > a:focus {
-    border-top-color: #ddd;
-    border-bottom-color: transparent;
-}
-
-.tabs-below > .nav-tabs > .active > a,
-.tabs-below > .nav-tabs > .active > a:hover,
-.tabs-below > .nav-tabs > .active > a:focus {
-    border-color: transparent #ddd #ddd #ddd;
-}
-
-.tabs-left > .nav-tabs > li,
-.tabs-right > .nav-tabs > li {
-    float: none;
-}
-
-.tabs-left > .nav-tabs > li > a,
-.tabs-right > .nav-tabs > li > a {
-    min-width: 74px;
-    margin-right: 0;
-    margin-bottom: 3px;
-}
-
-.tabs-left > .nav-tabs {
-    float: left;
-    margin-right: 19px;
-    border-right: 1px solid #ddd;
-}
-
-.tabs-left > .nav-tabs > li > a {
-    margin-right: -1px;
-    -webkit-border-radius: 4px 0 0 4px;
-    -moz-border-radius: 4px 0 0 4px;
-    border-radius: 4px 0 0 4px;
-}
-
-.tabs-left > .nav-tabs > li > a:hover,
-.tabs-left > .nav-tabs > li > a:focus {
-    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
-}
-
-.tabs-left > .nav-tabs .active > a,
-.tabs-left > .nav-tabs .active > a:hover,
-.tabs-left > .nav-tabs .active > a:focus {
-    border-color: #ddd transparent #ddd #ddd;
-    *border-right-color: #ffffff;
-}
-
-.tabs-right > .nav-tabs {
-    float: right;
-    margin-left: 19px;
-    border-left: 1px solid #ddd;
-}
-
-.tabs-right > .nav-tabs > li > a {
-    margin-left: -1px;
-    -webkit-border-radius: 0 4px 4px 0;
-    -moz-border-radius: 0 4px 4px 0;
-    border-radius: 0 4px 4px 0;
-}
-
-.tabs-right > .nav-tabs > li > a:hover,
-.tabs-right > .nav-tabs > li > a:focus {
-    border-color: #eeeeee #eeeeee #eeeeee #dddddd;
-}
-
-.tabs-right > .nav-tabs .active > a,
-.tabs-right > .nav-tabs .active > a:hover,
-.tabs-right > .nav-tabs .active > a:focus {
-    border-color: #ddd #ddd #ddd transparent;
-    *border-left-color: #ffffff;
-}
-
-/* ----- end custom tab ------*/
-
-#popUpContent{
-    text-align: center;
-}
-
-#contentTabs{
-    padding-top: 7px;
-    padding-bottom: 5px;
-    padding-right: 5px;
-}
-
-.titlePanel{
-    color : white;
-    text-align: center;
-}
-
-.titlePanel > button{
-    position: absolute;
-    right: 25px;
-    top: 55px;
 }
 
 #bottomPopUp {
@@ -225,26 +101,30 @@ body {
     height: 12px;
 }
 
-#informationPanel{
-    display: none;
-    background-color : white;
-    height: 400px;
-    width: 700px;
-    border-radius : 6px;
-    overflow-y: auto;
+/*Map*/
+#map-canvas {
+    position: absolute;
+    margin-top: 50px;
+    width: 100%;
+    height: 94%;
 }
 
-.commentBtn {
-    margin-right: 5%;
-    /*padding-top: 5px;*/
-    /text-align: center;
+#map-canvas img {
+    max-width: none; 
 }
 
-#tabsPanel {
-    font-size: 1.3em;
-    margin-top: -3px;
+
+/*Information panel*/
+.titlePanel{
+    color : white;
+    text-align: center;
 }
 
+.titlePanel > button{
+    position: absolute;
+    right: 25px;
+    top: 55px;
+}
 
 .moreBtn {
     text-align: center;
@@ -270,18 +150,31 @@ body {
     border-bottom-style: dashed;
 }
 
-#logo{
-    position:fixed;
-    bottom: 20px;
-    left: 5px;
-    height: 50px;
+.panel{
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    margin-top: 50px;
+    width: 436px;
+    height: 92%;
+    right: 0px;
+    overflow-y: auto;
+
+
+}
+#conteneur{
+    color:white;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: justify;
+}
+.line-separator{
+    height:1px;
+    background:white;
+    border-bottom:1px solid white;
 }
 
-@media screen and (max-width: 640px) {
-    #logo {
-        position:fixed;
-        bottom: 10px;
-        left: 5px;
-        height: 30px;
-    }
+.titleInfoPanel{
+    text-align: center;
+    cursor: pointer;
 }
