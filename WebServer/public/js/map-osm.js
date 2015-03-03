@@ -83,8 +83,8 @@ $.getJSON('/api/entity/',
             buildPanel(value);
             if(!$("#panelPOI").is(":visible"))
                 displayPannelInfoPOI();
-            
-            
+
+
         })
         .addTo(poiLayer);
     });
@@ -113,22 +113,22 @@ $('#panelInfoSensors').hide();
 function displayPannelTwitter(){
     if($("#panelInfoSensors").is(":visible"))
         $("#panelInfoSensors").toggle("slide",{ direction: "right" });
-    
+
     if($("#panelPOI").is(":visible"))
         $("#panelPOI").toggle("slide",{ direction: "right" });
-    
+
     $("#panelTwitter").toggle("slide",{ direction: "right" });
-    
-    
+
+
 }
 
 function displayPannelInfoSensor(){
     if($("#panelPOI").is(":visible"))
         $("#panelPOI").toggle("slide",{ direction: "right" });
-    
+
     if($("#panelTwitter").is(":visible"))
         $("#panelTwitter").toggle("slide",{ direction: "right" });
-    
+
     $("#panelInfoSensors").toggle("slide",{ direction: "right" });
 }
 
@@ -136,7 +136,7 @@ function displayPannelInfoSensor(){
 function displayPannelInfoPOI(){
     if($("#panelTwitter").is(":visible"))
         $("#panelTwitter").toggle("slide",{ direction: "right" });
-    
+
     if($("#panelInfoSensors").is(":visible"))
         $("#panelInfoSensors").toggle("slide",{ direction: "right" });
 
