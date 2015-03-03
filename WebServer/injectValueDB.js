@@ -9,7 +9,7 @@ function findIdLastMesureToAddToSensor(doc){
 			tabMesure.push(mesure._id);
 			doc.mesure = tabMesure;
   			doc.save();
-			console.log("update sensor with some temperature");
+			console.log("update sensor with some mesure");
 		});
 }
 
@@ -56,11 +56,25 @@ function injectTemperature(){
 	addMesureToRandomSensor();
 }
 
-function injectManyTemperature(nbT,delay){
+function injectPression(){
+	var random = getRandomInt(1013,1015);
+	var degree = new MesureModel({
+		value : random,
+		unite : "hPa"
+	});
+	degree.save(function (err) {
+  		if (err) { throw err; }
+  		console.log('pression : '+random+' hPa is added !');
+	});
+	addMesureToRandomSensor();
+}
+
+function injectManyMesure(nbT,delay){
 	var i = 0;
+	var tab = [injectPression,injectTemperature];
 	while (nbT > 0){
 		//setTimeout est non blocant
-		setTimeout(injectTemperature, delay*i);
+		setTimeout(tab[getRandomInt(0,2)], delay*i);
 		i++;
 		nbT--;
 	}
@@ -104,7 +118,7 @@ function main(){
 //injection de valeur de température
 	var nbT = 10;
 	var delay = 5000;
-	injectManyTemperature(nbT,delay);
+	injectManyMesure(nbT,delay);
 }
 
 
