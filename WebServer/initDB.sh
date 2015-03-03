@@ -1,7 +1,7 @@
 #!/bin/sh
 
  #import sensor
-mongoimport --db test --collection sensors_data < dbJSON/sensor.json
+mongoimport --db test --collection sensors_datas < dbJSON/sensor.json
  #import item 
 mongoimport --db test --collection item < dbJSON/item.json
  #import entity

@@ -1,4 +1,4 @@
-{type: "humidite", identifiant: "captor1" }
-{type: "humidite", identifiant: "RUFramboisierehumidite"}
-{type: "humidite", identifiant: "PolytechBureauDDhumidite"}
-{type: "airQualite", identifiant: "CROUSDortoirChambreMBairQualite"}
+{type: "humidite", identifiant: "captor1", mesure: [] }
+{type: "humidite", identifiant: "RUFramboisierehumidite",mesure: []}
+{type: "humidite", identifiant: "PolytechBureauDDhumidite",mesure: []}
+{type: "airQualite", identifiant: "CROUSDortoirChambreMBairQualite",mesure: []}

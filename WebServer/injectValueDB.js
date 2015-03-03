@@ -2,6 +2,47 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function findIdLastMesureToAddToSensor(doc){
+	//mettre 1 pour avoir le plus vieux
+	MesureModel.findOne({}, {}, { sort: { 'date' : -1 } }, function(err, mesure) {
+			var tabMesure = doc.mesure;
+			tabMesure.push(mesure._id);
+			doc.mesure = tabMesure;
+  			doc.save();
+			console.log("update sensor with some temperature");
+		});
+}
+
+// on suppose que le nom du capteur est unique
+function addMesureToSensor(name){
+	Sensors_dataModel.findOne({identifiant: name }, 
+		function (err, doc){
+			if(err){
+				throw(err);
+			}
+			if (doc === null){
+				throw("error : sensor with name : " +name+" isn't found");
+				
+			}
+			console.log("the sensor with name : "+name+" is found");
+
+			findIdLastMesureToAddToSensor(doc);
+			
+			
+  		}
+	);
+
+	
+}
+
+function addMesureToRandomSensor(){
+	//liste des noms des capteurs --> ils doivent être uniques
+	var tab = ["captor1","RUFramboisierehumidite","PolytechBureauDDhumidite","CROUSDortoirChambreMBairQualite"];
+	var nameSensor =  tab[getRandomInt(0,4)];
+	
+	addMesureToSensor(nameSensor);
+}
+
 function injectTemperature(){
 	var random = getRandomInt(-10,30);
 	var degree = new MesureModel({
@@ -12,6 +53,18 @@ function injectTemperature(){
   		if (err) { throw err; }
   		console.log('temperature : '+random+' °C is added !');
 	});
+	addMesureToRandomSensor();
+}
+
+function injectManyTemperature(nbT,delay){
+	var i = 0;
+	while (nbT > 0){
+		//setTimeout est non blocant
+		setTimeout(injectTemperature, delay*i);
+		i++;
+		nbT--;
+	}
+	setTimeout(stopDB, delay*i);
 }
 
 function stopDB(){
@@ -50,16 +103,8 @@ function main(){
 	console.log('connection is successed with db');
 //injection de valeur de température
 	var nbT = 10;
-	var i = 0;
 	var delay = 5000;
-	while (nbT > 0){
-		//setTimeout est non blocant
-		setTimeout(injectTemperature, delay*i);
-		i++;
-		nbT--;
-	}
-	setTimeout(stopDB, delay*i);
-	
+	injectManyTemperature(nbT,delay);
 }
 
 
