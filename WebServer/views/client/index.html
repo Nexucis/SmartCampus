@@ -72,19 +72,40 @@ menu template for interface
             <div id="map-canvas"></div> <!--balise qui affiche la carte-->
             <!--Menu lateral-->
             <div id="panelPOI" class="panel">
-                <div id="conteneur">
-                    <div class="titlePanel">
-                        <h3 id="informationTitle"></h3>
-                    </div>
+                <div class="conteneur">
+                    <h3 id="informationTitle" class="titlePanel"></h3>
                     <div class="line-separator"></div>
-                    <div id="contentPanel"></div>
-                    
+                    <div id="contentPanelPOI"></div>
+
                 </div>
             </div>
-            
+
             <div id="panelTwitter" class="panel"></div>
-            <div id="panelInfoSensors" class="panel"></div>
-            
+
+            <div id="panelInfoSensors" class="panel">
+                <div class="conteneur">
+                    <h3 id="titleSensors" class="titlePanel">Info capteurs</h3>
+                    <div class="line-separator"></div>
+                    <div id="contentPanelSensors">
+                        <div class="pull-right">
+                            Last Update: 
+                            <span>08/06/14 10:55:49 pm</span>
+                        </div>
+                        <br><br><br>
+                        <dl class="dl-horizontal">
+                            <dt class="customTypo">Temperature</dt>
+                            <dd class="badge pull-left">32°C</dd>
+                            <dt class="customTypo">Humidité</dt>
+                            <dd class="badge pull-left">80%</dd>
+                            <dt class="customTypo">Pression</dt>
+                            <dd class="badge pull-left">1024 hPa</dd>
+                        </dl>
+
+                    </div>
+                </div>
+
+            </div>
+
 
 
             <img id="logo" src="/images/logo_SmartCampus_transparent.svg" alt="SmartCampus" />

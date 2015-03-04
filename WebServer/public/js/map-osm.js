@@ -142,5 +142,3 @@ function displayPannelInfoPOI(){
 
     $("#panelPOI").toggle("slide",{ direction: "right" });
 }
-
-

@@ -569,8 +569,8 @@ function buildInfoPanel(title, content){
     var newTitle = title.replace(" ","");
     var titleDiv = "<h3 class=\"titleInfoPanel\"  onClick=\"$('#"+newTitle+"').toggle('blind')\">"+title+"</h3>";
     var contentDiv = "<div id=\""+newTitle+"\">"+content+"</div> "
-    $("#contentPanel").append(titleDiv);
-    $("#contentPanel").append(contentDiv);
+    $("#contentPanelPOI").append(titleDiv);
+    $("#contentPanelPOI").append(contentDiv);
     $("#"+newTitle).hide();
 }
 
@@ -587,7 +587,7 @@ function buildPanel(objElem) {
     entity.description = translate(entity.description);
 
     /* Clean le panel */
-    cleanChildOfNodeID("contentPanel");
+    cleanChildOfNodeID("contentPanelPOI");
     //Titre du panel info
     $("#informationTitle").html(objElem.name);
 
