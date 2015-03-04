@@ -1,5 +1,6 @@
 #!/bin/sh
-
+ #suppression de la bd
+mongo Client --eval "db.dropDatabase()"
  #import mesures
 mongoimport --db Client --host localhost:27017 --collection mesures < dbJSON/mesures.json
  #import sensor
