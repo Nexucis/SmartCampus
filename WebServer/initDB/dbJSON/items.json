@@ -1,11 +1,4 @@
-{ "name" : "Salle de cours 42", "description" : "Salle de cours 42", "show" : false, "_id" : { "$oid" : "54f6e1c9f6cf5aeb30d74d0c" }, "infos" : [], "Sensors_data" : [ "54f6e1c9f6cf5aeb30d74d08" ], "__v" : 0 }
-{ "name" : "Bureau", "description" : "Bureau de Didier Donsez", "show" : false, "_id" : { "$oid" : "54f6e1c9f6cf5aeb30d74d0d" }, "infos" : [], "Sensors_data" : [ "54f6e1c9f6cf5aeb30d74d0a" ], "__v" : 0 }
-{ "name" : "Salle Framboisière", "description" : "Salle Framboisière", "show" : false, "_id" : { "$oid" : "54f6e1caf6cf5aeb30d74d0e" }, "infos" : [], "Sensors_data" : [ "54f6e1c9f6cf5aeb30d74d09" ], "__v" : 0 }
-{ "name" : "CROUS Dortoir", "description" : "Dortoir de Mr Bidois Morgan", "show" : false, "_id" : { "$oid" : "54f6e1caf6cf5aeb30d74d0f" }, "infos" : [], "Sensors_data" : [ "54f6e1c9f6cf5aeb30d74d0b" ], "__v" : 0 }
-{ "identifiant" : 18, "name" : "Entracte", "type" : "Salle", "description" : "Batiment dessous Diderot", "_id" : { "$oid" : "54f6e1caf6cf5aeb30d74d15" }, "infos" : [], "Sensors_data" : [], "__v" : 0 }
-{ "identifiant" : 46, "name" : "Administratif", "type" : "Salle", "description" : "Viendez pour vos cartes monéo !!", "_id" : { "$oid" : "54f6e1caf6cf5aeb30d74d16" }, "infos" : [], "Sensors_data" : [], "__v" : 0 }
-{ "identifiant" : 17, "name" : "Traditionnel", "description" : "Manger des légumes au RU, oui oui oui oui !", "type" : "Salle", "_id" : { "$oid" : "54f6e1caf6cf5aeb30d74d17" }, "infos" : [], "Sensors_data" : [], "__v" : 0 }
-{ "identifiant" : 4, "name" : "Traditionnel", "description" : "Salle traditionnelle de Condillac", "type" : "Salle", "_id" : { "$oid" : "54f6e1caf6cf5aeb30d74d19" }, "infos" : [], "Sensors_data" : [], "__v" : 0 }
-{ "identifiant" : 3, "name" : "Traditionnel", "description" : "Miam j'adore les légumes des salles traditionnelles", "_id" : { "$oid" : "54f6e1caf6cf5aeb30d74d1b" }, "infos" : [], "Sensors_data" : [], "__v" : 0 }
-{ "identifiant" : 13, "name" : "Cafeteria", "description" : "Viendez manger des pizzas super bonnes de la mort qui tue à la Cafet'!!", "_id" : { "$oid" : "54f6e1caf6cf5aeb30d74d1c" }, "infos" : [], "Sensors_data" : [], "__v" : 0 }
-{ "identifiant" : 24, "name" : "Framboisière", "description" : "La Framboisière c'est trop bon, J'adore !!", "_id" : { "$oid" : "54f6e1caf6cf5aeb30d74d1d" }, "infos" : [], "Sensors_data" : [], "__v" : 0 }
+{ "name" : "Salle de cours 42", "description" : "Salle de cours 42", "show" : false, "_id" : { "$oid" : "54f70b40db68b89e3fd274ef" }, "infos" : [], "Sensors_data" : [], "__v" : 0 }
+{ "name" : "Bureau", "description" : "Bureau de Didier Donsez", "show" : true, "_id" : { "$oid" : "54f70b40db68b89e3fd274f0" }, "infos" : [], "Sensors_data" : [ "54f70b40db68b89e3fd274ed" ], "__v" : 0 }
+{ "identifiant" : 24, "name" : "Framboisière", "description" : "Salle Framboisière", "show" : true, "_id" : { "$oid" : "54f70b40db68b89e3fd274f1" }, "infos" : [], "Sensors_data" : [ "54f70b3fdb68b89e3fd274ec" ], "__v" : 0 }
+{ "name" : "CROUS Dortoir", "description" : "Dortoir d'un étudiant", "show" : true, "_id" : { "$oid" : "54f70b40db68b89e3fd274f2" }, "infos" : [], "Sensors_data" : [ "54f70b40db68b89e3fd274ee" ], "__v" : 0 }

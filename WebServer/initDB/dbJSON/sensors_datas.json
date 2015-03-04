@@ -1,0 +1,3 @@
+{ "type" : "humidite", "identifiant" : "RUFramboisierehumidite", "_id" : { "$oid" : "54f70b3fdb68b89e3fd274ec" }, "mesure" : [ "54f70b3fdb68b89e3fd274e9" ], "__v" : 0 }
+{ "type" : "humidite", "identifiant" : "PolytechBureauDDhumidite", "_id" : { "$oid" : "54f70b40db68b89e3fd274ed" }, "mesure" : [ "54f70b3fdb68b89e3fd274ea" ], "__v" : 0 }
+{ "type" : "airQualite", "identifiant" : "CROUSDortoirChambreMBairQualite", "_id" : { "$oid" : "54f70b40db68b89e3fd274ee" }, "mesure" : [ "54f70b3fdb68b89e3fd274eb" ], "__v" : 0 }

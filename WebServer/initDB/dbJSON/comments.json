@@ -1,0 +1,2 @@
+{ "value" : "Ouai ! Super com test !", "_id" : { "$oid" : "54f70b40db68b89e3fd274f3" }, "date" : { "$date" : 1425476416534 }, "__v" : 0 }
+{ "value" : "Deuxième comme de la mort ! Super com test !", "_id" : { "$oid" : "54f70b40db68b89e3fd274f4" }, "date" : { "$date" : 1425476416595 }, "__v" : 0 }
