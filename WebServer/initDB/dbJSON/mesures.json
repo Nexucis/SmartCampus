@@ -1,0 +1,6 @@
+{ "value" : 42, "_id" : { "$oid" : "54f70afadb68b89e3fd274e6" }, "date" : { "$date" : 1425476346594 }, "__v" : 0 }
+{ "value" : 18, "_id" : { "$oid" : "54f70afadb68b89e3fd274e7" }, "date" : { "$date" : 1425476346779 }, "__v" : 0 }
+{ "value" : 3, "_id" : { "$oid" : "54f70afadb68b89e3fd274e8" }, "date" : { "$date" : 1425476346920 }, "__v" : 0 }
+{ "value" : 42, "_id" : { "$oid" : "54f70b3fdb68b89e3fd274e9" }, "date" : { "$date" : 1425476415722 }, "__v" : 0 }
+{ "value" : 18, "_id" : { "$oid" : "54f70b3fdb68b89e3fd274ea" }, "date" : { "$date" : 1425476415775 }, "__v" : 0 }
+{ "value" : 3, "_id" : { "$oid" : "54f70b3fdb68b89e3fd274eb" }, "date" : { "$date" : 1425476415867 }, "__v" : 0 }
