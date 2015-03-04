@@ -1,0 +1,4 @@
+{ "first_name" : "nicolas", "name" : "husson", "login" : "nicolas", "password" : "password", "_id" : { "$oid" : "54f6e1cbf6cf5aeb30d74d1f" }, "entity" : [ { "$oid" : "54f6e1caf6cf5aeb30d74d13" } ], "__v" : 0 }
+{ "first_name" : "thomas", "name" : "nunes", "login" : "thomas", "password" : "password", "_id" : { "$oid" : "54f6e1cbf6cf5aeb30d74d20" }, "entity" : [ { "$oid" : "54f6e1caf6cf5aeb30d74d12" } ], "__v" : 0 }
+{ "first_name" : "simon", "name" : "planes", "login" : "simon", "password" : "password", "_id" : { "$oid" : "54f6e1cbf6cf5aeb30d74d21" }, "entity" : [ { "$oid" : "54f6e1caf6cf5aeb30d74d11" } ], "__v" : 0 }
+{ "first_name" : "laurene", "name" : "guelorgette", "login" : "laurene", "password" : "password", "_id" : { "$oid" : "54f6e1cbf6cf5aeb30d74d22" }, "entity" : [ { "$oid" : "54f6e1caf6cf5aeb30d74d11" } ], "__v" : 0 }

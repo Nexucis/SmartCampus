@@ -88,7 +88,7 @@ function stopDB(){
 
 
 function main(){
-	var addrmongo = 'mongodb://localhost/test';
+	var addrmongo = 'mongodb://localhost/Client';
 
 	var fs = require("fs");
 
