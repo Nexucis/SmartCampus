@@ -3,7 +3,7 @@ function getRandomInt(min, max) {
 }
 
 function findIdLastMesureToAddToSensor(doc){
-	//mettre 1 pour avoir le plus vieux
+	//mettre 1 pour avoir le plus vieux, -1 pour le plus récent
 	MesureModel.findOne({}, {}, { sort: { 'date' : -1 } }, function(err, mesure) {
 			var tabMesure = doc.mesure;
 			tabMesure.push(mesure._id);
@@ -105,7 +105,7 @@ function main(){
     		var code = fs.readFileSync(path);
     		vm.runInThisContext(code, path);
 	}.bind(this);
-	var routes = require('./routes');
+	var routes = require('./../routes');
 
 	includeInThisContext(__dirname + "/model.js");
 
