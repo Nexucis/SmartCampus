@@ -677,11 +677,12 @@ function buildPanel(objElem) {
                             console.log(err);
                         }
                     });
-                    sensorContent += sensorLoaded.type + " : " + mesure.value;
+                    sensorContent += '<dl class="dl-horizontal">';
+                    sensorContent += '<dt class="customTypo">'+sensorLoaded.type + " : </dt>" +'<dd class="badge pull-left">'+ mesure.value;
                     if (sensorLoaded.type === "airQualite") {
-                        sensorContent += " ppm";
+                        sensorContent += " ppm</dd>";
                     } else if (sensorLoaded.type === "humidite") {
-                        sensorContent += " %";
+                        sensorContent += " %</dd>";
                     }
                     sensorContent += "<br>";
                 });

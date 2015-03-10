@@ -78,6 +78,30 @@ var Administrator = new Schema({
     entity: [{type: Schema.Types.ObjectId, ref: 'Entity'}]
 });
 
+
+var SensorsWireless = new Schema({
+    id:ObjectId,
+    name:String,
+    latitude : Number,
+    longitude : Number,
+    date:{type:Date, default:Date.now}
+
+});
+
+
+var SensorsWirelessData = new Schema({
+    id:ObjectId,
+    temperature:Number,
+    pression:Number,
+    luminosite:Number,
+    pluviometrie:Number,
+    directionVent:Number,
+    humidite:Number,
+    vitesseVent:Number
+    
+    
+});
+
 // models
 var EventModel = mongoose.model('Event', Event);
 var ItemModel = mongoose.model('Item', Item);
@@ -86,5 +110,7 @@ var AdministratorModel = mongoose.model('Administrator', Administrator);
 var CommentModel = mongoose.model('Comment', Comment);
 var MesureModel = mongoose.model('Mesure', Mesure);
 var Sensors_dataModel = mongoose.model('Sensors_data', Sensors_data);
+var SensorsWirelessModel = mongoose.model('SensorsWireless', SensorsWireless);
+var SensorsWirelessDataModel = mongoose.model('SensorsWirelessData', SensorsWirelessData);
 
 console.log('import model');
