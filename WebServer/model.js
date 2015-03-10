@@ -81,10 +81,9 @@ var Administrator = new Schema({
 
 var SensorsWireless = new Schema({
     id:ObjectId,
-    name:String,
+    name:Number,
     latitude : Number,
-    longitude : Number,
-    date:{type:Date, default:Date.now}
+    longitude : Number
 
 });
 
@@ -97,7 +96,8 @@ var SensorsWirelessData = new Schema({
     pluviometrie:Number,
     directionVent:Number,
     humidite:Number,
-    vitesseVent:Number
+    vitesseVent:Number,
+    date:{type:Date, default:Date.now}
     
     
 });

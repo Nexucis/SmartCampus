@@ -61,7 +61,6 @@ var ICONS = {
 
 //define layers
 var poiLayer = new L.LayerGroup();
-
 var pois = [];
 
 $.getJSON('/api/entity/',
@@ -78,17 +77,47 @@ $.getJSON('/api/entity/',
     var marker;
     $.each(pois, function(index, value) {
         marker = L.marker([value.latitude, value.longitude], {icon:ICONS[value.type]})
-        .addTo(map)
-        .on('click', function (e) {
+            .addTo(map)
+            .on('click', function (e) {
             buildPanel(value);
             if(!$("#panelPOI").is(":visible"))
                 displayPannelInfoPOI();
 
 
         })
-        .addTo(poiLayer);
+            .addTo(poiLayer);
     });
 });
+
+
+//display the sensors
+var sensor = [];
+var sensorLayer = new L.LayerGroup();;
+
+$.getJSON('/api/SensorsWireless/',
+          function(data) {
+    var sensorName = 0;
+    while (data.payload[sensorName]) {
+        if (data.payload[sensorName].latitude && data.payload[sensorName].longitude) {
+            sensor.push(
+                data.payload[sensorName]
+            );
+        }
+        sensorName++;
+    }
+    var marker;
+    $.each(sensor, function(index, value) {
+        marker = L.marker([value.latitude, value.longitude])
+            .addTo(map)
+            .on('click', function (e) {
+                displayPannelInfoSensor();
+        })
+            .addTo(sensorLayer);
+    });
+});
+
+
+
 
 var overlays = {
     "Points of interest": poiLayer
