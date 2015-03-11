@@ -28,7 +28,8 @@ Launch
 Init database
 --------------
 
-    http://localhost:4242/initDB.html
+    se mettre dans le dossier /SmartCampus/WebServer/initDB
+    sh initDB.sh
 
 mongo usage
 ============
