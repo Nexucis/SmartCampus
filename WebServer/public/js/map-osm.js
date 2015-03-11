@@ -85,10 +85,8 @@ $.getJSON('/api/entity/',
             .addTo(map)
             .on('click', function (e) {
             buildPanel(value);
-            if(!$("#panelPOI").is(":visible"))
-                displayPannelInfoPOI();
-
-
+            //if(!$("#panelPOI").is(":visible"))
+            displayPannelInfoPOI();
         })
             .addTo(poiLayer);
     });
@@ -115,6 +113,7 @@ $.getJSON('/api/SensorsWireless/',
         marker = L.marker([value.latitude, value.longitude], {icon:capteur})
             .addTo(map)
             .on('click', function (e) {
+            buildPannelSensor(value);
             displayPannelInfoSensor();
         })
             .addTo(sensorLayer);
@@ -125,13 +124,14 @@ $.getJSON('/api/SensorsWireless/',
 
 
 var overlays = {
-    "Points of interest": poiLayer
+    "Points of interest": poiLayer,
+    "Sensors":sensorLayer,
 }
 
 L.tileLayer(mapboxUrl, {
     attribution: mapboxAttribution,
     maxZoom:18,
-    layers:[poiLayer]
+    layers:[poiLayer,sensorLayer]
 }).addTo(map);
 
 L.control.layers(null,overlays).addTo(map);

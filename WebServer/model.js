@@ -81,7 +81,7 @@ var Administrator = new Schema({
 
 var SensorsWireless = new Schema({
     id:ObjectId,
-    name:Number,
+    name:String,
     latitude : Number,
     longitude : Number,
     clefAES:String
@@ -89,13 +89,14 @@ var SensorsWireless = new Schema({
 });
 
 
-var SensorsWirelessData = new Schema({
+var SensorsWireless_Data = new Schema({
     id:ObjectId,
+    name:String,
     temperature:Number,
     pression:Number,
     luminosite:Number,
     pluviometrie:Number,
-    directionVent:Number,
+    directionVent:String,
     humidite:Number,
     vitesseVent:Number,
     date:{type:Date, default:Date.now}
@@ -112,6 +113,6 @@ var CommentModel = mongoose.model('Comment', Comment);
 var MesureModel = mongoose.model('Mesure', Mesure);
 var Sensors_dataModel = mongoose.model('Sensors_data', Sensors_data);
 var SensorsWirelessModel = mongoose.model('SensorsWireless', SensorsWireless);
-var SensorsWirelessDataModel = mongoose.model('SensorsWirelessData', SensorsWirelessData);
+var SensorsWirelessDataModel = mongoose.model('SensorsWireless_Data', SensorsWireless_Data);
 
 console.log('import model');

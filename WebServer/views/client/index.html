@@ -32,13 +32,14 @@ menu template for interface
         <script type="text/javascript" src="/js/loader.js"></script>
         <script type="text/javascript" src="/bower_components/L.EasyButton/easy-button.js"></script>
         <script type="text/javascript" src="/bower_components/jqueryui/jquery-ui.min.js"></script>
-        <!--injecte un capteur dans la bonne collection<script>
+        <script>
             jQuery.ajax({url: "/api/SensorsWireless",
                          type: 'POST',
                          data: {
-                             "name": 3,
-                             "latitude":45.1808724,
-                             "longitude":5.773416
+                             "name": "3",
+                             "latitude":45.3,
+                             "longitude":5.9,
+                             "clefAES": "ABCDEF123"
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -47,8 +48,104 @@ menu template for interface
                          cache: false
                         });
 
+            jQuery.ajax({url: "/api/SensorsWireless_Data",
+                         type: 'POST',
+                         data: {
+                             "name": "3",
+                             "temperature":12,
+                             "pression":1010,
+                             "luminosite":30,
+                             "pluviometrie":0,
+                             "directionVent":"Nord",
+                             "humidite":20,
+                             "vitesseVent":0,
+                             "date":Date.now(),
+                         },
+                         success: function(data, textStatus, jqXHR) {
+                             console.log("injected data");
+                         },
+                         async: false,
+                         cache: false
+                        });
+            jQuery.ajax({url: "/api/SensorsWireless_Data",
+                         type: 'POST',
+                         data: {
+                             "name": "3",
+                             "temperature":16,
+                             "pression":1000,
+                             "luminosite":90,
+                             "pluviometrie":10,
+                             "directionVent":"Sud",
+                             "humidite":60,
+                             "vitesseVent":13,
+                             "date":Date.now(),
+                         },
+                         success: function(data, textStatus, jqXHR) {
+                             console.log("injected data");
+                         },
+                         async: false,
+                         cache: false
+                        });
+            jQuery.ajax({url: "/api/SensorsWireless_Data",
+                         type: 'POST',
+                         data: {
+                             "name": "3",
+                             "temperature":30,
+                             "pression":940,
+                             "luminosite":300,
+                             "pluviometrie":30,
+                             "directionVent":"Sud",
+                             "humidite":80,
+                             "vitesseVent":50,
+                             "date":Date.now(),
+                         },
+                         success: function(data, textStatus, jqXHR) {
+                             console.log("injected data");
+                         },
+                         async: false,
+                         cache: false
+                        });
+            jQuery.ajax({url: "/api/SensorsWireless_Data",
+                         type: 'POST',
+                         data: {
+                             "name": "3",
+                             "temperature":45,
+                             "pression":1050,
+                             "luminosite":240,
+                             "pluviometrie":10,
+                             "directionVent":"Ouest",
+                             "humidite":55,
+                             "vitesseVent":30,
+                             "date":Date.now(),
+                         },
+                         success: function(data, textStatus, jqXHR) {
+                             console.log("injected data");
+                         },
+                         async: false,
+                         cache: false
+                        });
+            jQuery.ajax({url: "/api/SensorsWireless_Data",
+                         type: 'POST',
+                         data: {
+                             "name": "4",
+                             "temperature":45,
+                             "pression":1050,
+                             "luminosite":240,
+                             "pluviometrie":10,
+                             "directionVent":"Ouest",
+                             "humidite":55,
+                             "vitesseVent":30,
+                             "date":Date.now(),
+                         },
+                         success: function(data, textStatus, jqXHR) {
+                             console.log("injected data");
+                         },
+                         async: false,
+                         cache: false
+                        });
 
-        </script>-->
+        
+        </script>
 
     </head>
     <body>

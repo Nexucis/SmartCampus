@@ -835,3 +835,31 @@ function showModalHelp(htmlNodeToAppend) {
         "</div>";
     $(htmlNodeToAppend).append(modalHelp);
 }
+
+/*
+* Affichage des dernieres donnees d'un capteur dans le panel
+*/
+function buildPannelSensor(objElem){
+    console.log(objElem);
+    cleanChildOfNodeID("contentPanelSensors");
+    
+    jQuery.ajax({
+        type: 'GET',
+        async: false,
+        url: "/api/sensorsWireless_Data/" + objElem.name,
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+    
+    
+    
+    
+    
+    
+}
+
+
