@@ -9,21 +9,18 @@
     <body>
         <h1>Ajout de capteurs</h1>
         <form class="form-horizontal">
-            <!-- Select Basic -->
+        <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="sensorsType">Type de capteur</label>
+                <label class="col-md-4 control-label" for="Name">Name *</label>  
                 <div class="col-md-4">
-                    <select id="sensorsType" name="sensorsType" class="form-control">
-                        <option value="humidite">Humidité</option>
-                        <option value="airQualite">Qualité de l'air</option>
-                        <option value="temperature">Température</option>
-                    </select>
+                    <input id="sensorsId" name="Name" type="text" placeholder="" class="form-control input-md">
+
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="latitude">Latitude</label>  
+                <label class="col-md-4 control-label" for="latitude">Latitude *</label>  
                 <div class="col-md-4">
                     <input id="latitude" name="latitude" type="text" placeholder="4.2" class="form-control input-md">
 
@@ -32,7 +29,7 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="longitude">Longitude</label>  
+                <label class="col-md-4 control-label" for="longitude">Longitude *</label>  
                 <div class="col-md-4">
                     <input id="longitude" name="longitude" type="text" placeholder="4.2" class="form-control input-md">
 
@@ -47,26 +44,42 @@
                     <span class="help-block">128 ou 192 bits</span>  
                 </div>
             </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="identifier">Identifier</label>  
-                <div class="col-md-4">
-                    <input id="sensorsId" name="Identifier" type="text" placeholder="" class="form-control input-md">
-
-                </div>
-            </div>
 
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="validate"></label>
                 <div class="col-md-4">
-                    <button id="validate" name="validate" class="btn btn-info">Valider</button>
+                    <button id="validate" name="validate" class="btn btn-info" onclick="send()">Valider</button>
                 </div>
             </div>
 
         </form>
+        <script type="text/javascript">
+            
+            function send(){
+                var name = document.forms[0].elements["Name"].value;
+                var longitude = document.forms[0].elements["longitude"].value;
+                var latitude = document.forms[0].elements["latitude"].value;
+                if((name !== "")&&(longitude !== "")&&(latitude !== "")){
 
+                    jQuery.ajax({
+                        url: "http://localhost:9999/api/SensorsWireless",
+                        type: 'POST',
+                        data: {"name": name,
+                            "latitude": latitude,
+                            "longitude": longitude,
+                            "clefAES":document.forms[0].elements["aeskey"].value
+                        },
+                        success: function() {
+                            console.log("success");
+                        },
+                    });
+                } else{
+                    console.log("tg");
+                }
+            }
+            
+        </script>
 
     </body>
 </html>
