@@ -4,3 +4,7 @@ https://github.com/thomasNDS/SmartCampus2014
 
 Our wiki page can be found here :
 http://air.imag.fr/index.php/Proj-2014-2015-SmartCampus2015
+
+Premier lancement
+=========
+Suivant sur quel OS vous êtes, lancer le script run.bash ou run.bat
