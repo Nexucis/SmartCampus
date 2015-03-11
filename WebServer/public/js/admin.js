@@ -263,3 +263,4 @@ function show_modal(title, text) {
     $("#div_modal_body").html(text);
     $("#div_modal_title").html(title);
 }
+
