@@ -45,6 +45,11 @@ var ecole = L.AwesomeMarkers.icon({
         markerColor: 'orange'
     });
 
+var capteur = L.AwesomeMarkers.icon({
+    icon:'connectdevelop',
+    prefix:'fa',
+    markerColor:'darkpurple'
+});
 var ICONS = {
     "Université": ecole,
     "Ecole d'ingénieur": ecole,
@@ -107,10 +112,10 @@ $.getJSON('/api/SensorsWireless/',
     }
     var marker;
     $.each(sensor, function(index, value) {
-        marker = L.marker([value.latitude, value.longitude])
+        marker = L.marker([value.latitude, value.longitude], {icon:capteur})
             .addTo(map)
             .on('click', function (e) {
-                displayPannelInfoSensor();
+            displayPannelInfoSensor();
         })
             .addTo(sensorLayer);
     });

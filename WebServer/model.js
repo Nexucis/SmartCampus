@@ -83,7 +83,8 @@ var SensorsWireless = new Schema({
     id:ObjectId,
     name:Number,
     latitude : Number,
-    longitude : Number
+    longitude : Number,
+    clefAES:String
 
 });
 
