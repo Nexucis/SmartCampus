@@ -1,3 +1,5 @@
+#! /usr/bin/python2.7
+# -*-coding:Utf-8 -*
 #Created by Barbier Jérôme and Fréby Rodolphe
 #Project SmartCampus2015
 #27/02/2015
@@ -63,8 +65,14 @@ def ReadSerie():
                 sys.exit(-2)
         result = ser.read(1024)
         ser.close()
-        s = result.decode("utf-8")
-        if s == "TIMEOUT":
+	s = "DEFAULT"
+	try:
+        	s = result.decode("utf-8")
+        except Exception as e:
+		time = datetime.datetime.now()
+		string = time.isoformat() + " : Error, impossible to decode in UTF-8\n" + str(e)
+		logging.error(string)
+	if s == "TIMEOUT":
                 #Create a log report
                 print("Timeout for the receiver")
                 time = datetime.datetime.now()
@@ -75,7 +83,9 @@ def ReadSerie():
                 printf("Error during the transmission")
                 string = time.isoformat() + " : Error during the transmission"
                 logging.error(string)
-        elif s == '':
+        elif s == "DEFAULT":
+		print("Default")
+	elif s == '':
                 print("Nothing received")
         else:
                 print(s)
