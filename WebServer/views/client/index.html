@@ -32,6 +32,23 @@ menu template for interface
         <script type="text/javascript" src="/js/loader.js"></script>
         <script type="text/javascript" src="/bower_components/L.EasyButton/easy-button.js"></script>
         <script type="text/javascript" src="/bower_components/jqueryui/jquery-ui.min.js"></script>
+        <!--injecte un capteur dans la bonne collection<script>
+            jQuery.ajax({url: "/api/SensorsWireless",
+                         type: 'POST',
+                         data: {
+                             "name": 3,
+                             "latitude":45.1808724,
+                             "longitude":5.773416
+                         },
+                         success: function(data, textStatus, jqXHR) {
+                             console.log("injected data");
+                         },
+                         async: false,
+                         cache: false
+                        });
+
+
+        </script>-->
 
     </head>
     <body>
@@ -82,9 +99,9 @@ menu template for interface
 
             <div id="panelTwitter" class="panel">
                 <!--<div class="conteneur">
-                    <a class="twitter-timeline" href="https://twitter.com/OpenSmartCampus" data-widget-id="480202600965369856">Tweets de @OpenSmartCampus</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                </div>-->
+<a class="twitter-timeline" href="https://twitter.com/OpenSmartCampus" data-widget-id="480202600965369856">Tweets de @OpenSmartCampus</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>-->
 
             </div>
 
