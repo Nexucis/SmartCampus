@@ -5,55 +5,78 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
+        <link href="/bower_components/leaflet/dist/leaflet.css" rel="stylesheet">
+        <link href="/css/panelAdmin.css" rel="stylesheet" type="text/css">
+
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/leaflet/dist/leaflet.js"></script>
+        <script src="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
+
+        <script type="text/javascript" src="/js/mapAdmin.js"></script>
+
+
     </head>
     <body>
-        <h1>Ajout de capteurs</h1>
-        <form class="form-horizontal">
-        <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="Name">Name *</label>  
-                <div class="col-md-4">
-                    <input id="sensorsId" name="Name" type="text" placeholder="" class="form-control input-md">
 
-                </div>
+
+        <div id="splitter">
+            <div class="col-md-6">
+                <h1>Ajout de capteurs</h1>
+                <form class="form-horizontal">
+                <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="identifier">Name *</label>  
+                        <div class="col-md-4">
+                            <input id="sensorsId" name="Name" type="text" placeholder="" class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="latitude">Latitude *</label>  
+                        <div class="col-md-4">
+                            <input id="latitude" name="latitude" type="text" placeholder="4.2" class="form-control input-md">
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="longitude">Longitude *</label>  
+                        <div class="col-md-4">
+                            <input id="longitude" name="longitude" type="text" placeholder="4.2" class="form-control input-md">
+
+                        </div>
+                    </div>
+
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="aeskey">Clef AES</label>  
+                        <div class="col-md-4">
+                            <input id="aeskey" name="aeskey" type="text" placeholder="" class="form-control input-md">
+                            <span class="help-block">128 ou 192 bits</span>  
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="validate"></label>
+                        <div class="col-md-4">
+                            <button id="validate" name="validate" class="btn btn-info" onclick="send()">Valider</button>
+                        </div>
+                    </div>
+
+                </form>
             </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="latitude">Latitude *</label>  
-                <div class="col-md-4">
-                    <input id="latitude" name="latitude" type="text" placeholder="4.2" class="form-control input-md">
-
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="longitude">Longitude *</label>  
-                <div class="col-md-4">
-                    <input id="longitude" name="longitude" type="text" placeholder="4.2" class="form-control input-md">
-
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="aeskey">Clef AES</label>  
-                <div class="col-md-4">
-                    <input id="aeskey" name="aeskey" type="text" placeholder="" class="form-control input-md">
-                    <span class="help-block">128 ou 192 bits</span>  
-                </div>
-            </div>
-
-            <!-- Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="validate"></label>
-                <div class="col-md-4">
-                    <button id="validate" name="validate" class="btn btn-info" onclick="send()">Valider</button>
-                </div>
-            </div>
-
-        </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Rentrez la position ou selectionnez la sur la carte</h3>
+            <div id=mapAdmin></div>
+        </div>
+        
         <script type="text/javascript">
             
             function send(){
@@ -80,6 +103,5 @@
             }
             
         </script>
-
     </body>
 </html>
