@@ -128,6 +128,6 @@ app.get('/restricted', restrict, function(request, response) {
 });
 
 //Run the server
-http.createServer(app).listen(4242, function() {
-    console.log("\n Start on http://localhost:4242 \n");
+http.createServer(app).listen(9999, function() {
+    console.log("\n Start on http://localhost:9999 \n");
 });
