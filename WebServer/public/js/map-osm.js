@@ -117,7 +117,10 @@ $.getJSON('/api/SensorsWireless/',
             if(!$("#panelInfoSensors").is(":visible"))
                 displayPannelInfoSensor();
         })
-            .addTo(sensorLayer);
+            .addTo(sensorLayer)
+            .bindPopup('<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>')
+            .on('click',drawGraphTP)
+        ;
     });
 });
 
