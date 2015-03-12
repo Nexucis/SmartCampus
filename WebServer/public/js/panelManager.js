@@ -840,21 +840,50 @@ function showModalHelp(htmlNodeToAppend) {
 * Affichage des dernieres donnees d'un capteur dans le panel
 */
 function buildPannelSensor(objElem){
-    console.log(objElem);
-    cleanChildOfNodeID("contentPanelSensors");
     
+    $("#titleSensors").html("Info capteurs n°"+objElem.name);
+    
+
+    cleanChildOfNodeID("contentPanelSensors");
+    var sensorsData;
     jQuery.ajax({
         type: 'GET',
         async: false,
-        url: "/api/sensorsWireless_Data/" + objElem.name,
+        url: "/api/sensorsWireless_Data/",
         success: function(data) {
-            console.log(data);
+            sensorsData = data.payload;
         },
         error: function(err) {
             console.log(err);
         }
     });
     
+    var lastData = [];
+    sensorsData.forEach(function(elem, index, array){
+        if(elem.name === objElem.name){
+            lastData.push(elem);
+        }
+    });
+    
+    var lastData = lastData[lastData.length-1];
+    var updateTime = '<div class="pull-right">Last update : '+lastData.date.toString()+'</div><br><br><br>';
+    $("#contentPanelSensors").append(updateTime);
+    
+    var tmp = '<dl class="dl-horizontal">';
+    
+    tmp += '<dt class="customTypo">Temperature</dt><dd class="badge pull-left">'+lastData.temperature+'°C<dd>';
+    tmp += '<dt class="customTypo">Humidité</dt><dd class="badge pull-left">'+lastData.humidite+'%<dd>';
+    tmp += '<dt class="customTypo">Pression</dt><dd class="badge pull-left">'+lastData.pression+'hPa<dd>';
+    tmp += '<dt class="customTypo">Luminosité</dt><dd class="badge pull-left">'+lastData.luminosite+'Lux<dd>';
+    tmp += '<dt class="customTypo">Pluviométrie</dt><dd class="badge pull-left">'+lastData.pluviometrie+'mm<dd>';
+    tmp += '<dt class="customTypo">Direction du vent</dt><dd class="badge pull-left">'+lastData.directionVent+'<dd>';
+    tmp += '<dt class="customTypo">Vitesse du vent</dt><dd class="badge pull-left">'+lastData.vitesseVent+'km/h<dd>';
+    
+    tmp += '</div>'
+    
+    
+    
+    $("#contentPanelSensors").append(tmp);
     
     
     

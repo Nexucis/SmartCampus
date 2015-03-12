@@ -85,8 +85,8 @@ $.getJSON('/api/entity/',
             .addTo(map)
             .on('click', function (e) {
             buildPanel(value);
-            //if(!$("#panelPOI").is(":visible"))
-            displayPannelInfoPOI();
+            if(!$("#panelPOI").is(":visible"))
+                displayPannelInfoPOI();
         })
             .addTo(poiLayer);
     });
@@ -114,7 +114,8 @@ $.getJSON('/api/SensorsWireless/',
             .addTo(map)
             .on('click', function (e) {
             buildPannelSensor(value);
-            displayPannelInfoSensor();
+            if(!$("#panelInfoSensors").is(":visible"))
+                displayPannelInfoSensor();
         })
             .addTo(sensorLayer);
     });
