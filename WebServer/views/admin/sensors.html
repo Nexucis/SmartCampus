@@ -88,6 +88,7 @@
                 var name = document.forms[0].elements["Name"].value;
                 var longitude = document.forms[0].elements["longitude"].value;
                 var latitude = document.forms[0].elements["latitude"].value;
+                
                 if((name !== "")&&(longitude !== "")&&(!isNaN(longitude))&&(latitude !== "")&&(!isNaN(latitude))){
 
                     jQuery.ajax({
