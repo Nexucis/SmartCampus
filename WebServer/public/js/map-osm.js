@@ -4,7 +4,10 @@
  *  License MIT
  */
 
-var map = L.map('map-canvas').setView([45.19, 5.76], 14);
+var map = L.map('map-canvas').setView([45.19, 5.76], 14)
+.on('click',function(e){
+hidePanel();
+});
 
 var mapboxUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
     mapboxAttribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
@@ -115,11 +118,13 @@ $.getJSON('/api/SensorsWireless/',
             .on('click', function (e) {
             buildPannelSensor(value);
             if(!$("#panelInfoSensors").is(":visible"))
-                displayPannelInfoSensor();
+                displayPanelInfoSensor();
         })
             .addTo(sensorLayer)
             .bindPopup('<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>')
-            .on('click',drawGraphTP)
+            .on('click',function(e){
+            drawGraphTP(value);
+        })
         ;
     });
 });
@@ -139,16 +144,16 @@ L.tileLayer(mapboxUrl, {
 }).addTo(map);
 
 L.control.layers(null,overlays).addTo(map);
-L.easyButton('fa-twitter', displayPannelTwitter,'Twitter of UJF')
-L.easyButton('fa-sun-o', displayPannelInfoSensor,"Display the sensor informations")
-L.easyButton('fa-info', displayPannelInfoPOI,'Display the POI information')
+L.easyButton('fa-twitter', displayPanelTwitter,'Twitter of UJF')
+L.easyButton('fa-sun-o', displayPanelInfoSensor,"Display the sensor informations")
+L.easyButton('fa-info', displayPanelInfoPOI,'Display the POI information')
 
 //gestion du panel d'affichage des info
 $('#panelPOI').hide();
 $('#panelTwitter').hide();
 $('#panelInfoSensors').hide();
 
-function displayPannelTwitter(){
+function displayPanelTwitter(){
     if($("#panelInfoSensors").is(":visible"))
         $("#panelInfoSensors").toggle("slide",{ direction: "right" });
 
@@ -160,7 +165,7 @@ function displayPannelTwitter(){
 
 }
 
-function displayPannelInfoSensor(){
+function displayPanelInfoSensor(){
     if($("#panelPOI").is(":visible"))
         $("#panelPOI").toggle("slide",{ direction: "right" });
 
@@ -171,7 +176,7 @@ function displayPannelInfoSensor(){
 }
 
 
-function displayPannelInfoPOI(){
+function displayPanelInfoPOI(){
     if($("#panelTwitter").is(":visible"))
         $("#panelTwitter").toggle("slide",{ direction: "right" });
 
@@ -180,3 +185,18 @@ function displayPannelInfoPOI(){
 
     $("#panelPOI").toggle("slide",{ direction: "right" });
 }
+
+function hidePanel(){
+    if($("#panelTwitter").is(":visible"))
+        $("#panelTwitter").toggle("slide",{ direction: "right" });
+    
+    if($("#panelPOI").is(":visible"))
+        $("#panelPOI").toggle("slide",{ direction: "right" });
+    
+    if($("#panelInfoSensors").is(":visible"))
+        $("#panelInfoSensors").toggle("slide",{ direction: "right" });
+    
+}
+    
+    
+    
