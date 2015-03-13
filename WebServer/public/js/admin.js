@@ -78,26 +78,6 @@ function displayLeftPanel(link) {
 }
 
 function get_sensors() {
-    if (current_entity) {
-        $.getJSON('/api/entity/' + current_entity,
-                  function(data) {
-            var items = data.payload.items;
-            $(items).each(function(index, value) {
-                $.getJSON('/api/item/' + value,
-                          function(item) {
-                    $("#div_sensors").append("<p>" + item.payload.name + "</p><table class=\"table\"><tbody id=\"tbody_" + item.payload._id + "\"></tbody></table>");
-                    $(item.payload.Sensors_data).each(function(index, value) {
-                        $.getJSON('/api/sensors_data/' + value,
-                                  function(sensor) {
-                            $("#tbody_" + item.payload._id).append("<tr><td>" + sensor.payload.identifiant + "</td>"
-                                                                   + "<td><a href=\"#\" title=\"Modifier\"><i class=\"glyphicon glyphicon-pencil\"></i></a></td>"
-                                                                   + "<td><a href=\"#\" title=\"Supprimer\"><i class=\"glyphicon glyphicon-remove\"></i></a></td></tr>");
-                        });
-                    });
-                });
-            });
-        });
-    }
 }
 
 function get_comments() {
