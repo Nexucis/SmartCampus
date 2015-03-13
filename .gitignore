@@ -1,3 +1,6 @@
+#log folder
+PointToPoint/Gateway/logs/
+
 # Object files
 *.o
 *.ko
@@ -32,3 +35,4 @@ node_modules/
 bower_components/
 
 *~
+

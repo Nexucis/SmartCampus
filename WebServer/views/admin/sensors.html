@@ -24,7 +24,7 @@
         <div id="splitter">
             <div class="col-md-6">
                 <h1>Ajout de capteurs</h1>
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="" id="myForm">
                 <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="identifier">Name *</label>  
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="validate"></label>
                         <div class="col-md-4">
-                            <button id="validate" name="validate" class="btn btn-info" onclick="send()">Valider</button>
+                            <button id="validate" name="validate" class="btn btn-info">Valider</button>
                         </div>
                     </div>
 
@@ -78,12 +78,18 @@
         </div>
         
         <script type="text/javascript">
-            
-            function send(){
+            jQuery("#myForm").submit(function(event) {
+                event.preventDefault(); //empeche le refresh de la page
+                
+                jQuery("#sensorsId").css("background-color","white");
+                jQuery("#latitude").css("background-color","white");
+                jQuery("#longitude").css("background-color","white");
+                
                 var name = document.forms[0].elements["Name"].value;
                 var longitude = document.forms[0].elements["longitude"].value;
                 var latitude = document.forms[0].elements["latitude"].value;
-                if((name !== "")&&(longitude !== "")&&(latitude !== "")){
+                
+                if((name !== "")&&(longitude !== "")&&(!isNaN(longitude))&&(latitude !== "")&&(!isNaN(latitude))){
 
                     jQuery.ajax({
                         url: "http://localhost:9999/api/SensorsWireless",
@@ -95,13 +101,23 @@
                         },
                         success: function() {
                             console.log("success");
-                        },
+                        }
                     });
                 } else{
-                    console.log("tg");
+                    console.log("error");
+                    if(name === ""){
+                        jQuery("#sensorsId").css("background-color","red");
+                    }
+                    if((latitude === "")||(isNaN(latitude))){
+                        jQuery("#latitude").css("background-color","red");
+                    }
+                    
+                    if((longitude === "")||(isNaN(longitude))){
+                        jQuery("#longitude").css("background-color","red");
+                    }
                 }
-            }
-            
+            });
+              
         </script>
     </body>
 </html>
