@@ -89,7 +89,7 @@ $.getJSON('/api/entity/',
             .on('click', function (e) {
             buildPanel(value);
             if(!$("#panelPOI").is(":visible"))
-                displayPannelInfoPOI();
+                displayPanelInfoPOI();
         })
             .addTo(poiLayer);
     });

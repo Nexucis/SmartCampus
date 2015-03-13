@@ -237,9 +237,6 @@ function drawGraphTP(objElem) {
         seconds : new Date(lastData[0][0]).getSeconds()
         
     };
-
-    console.log(lastDate);
-
     $('#container').highcharts({
         chart: {
             zoomType: 'x'
