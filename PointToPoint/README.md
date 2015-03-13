@@ -14,56 +14,63 @@ A réception d'un message, celui-ci est envoyé sur le port série.
 Contient le code à compiler et envoyer sur les cartes STM32L152RE pour être l'émetteur.
 Le format d'envoie des messages est le suivant :
 
-0				8								24				32				40
+<pre>
+0               8                               24              32              40
 +---------------+---------------+---------------+---------------+---------------+
-|				|								|				|				|				
-|	  Id		|		Wind direction			|    Humidity	|  Temperature	|
-|				|								|				|				|
+|               |                               |               |               |
+|     Id        |         Wind direction        |   Humidity    | Temperature   |
+|               |                               |               |               |
 +---------------+---------------+---------------+---------------+---------------+
+</pre>
 
-40																72
+<pre>
+40                                                              72
 +---------------+---------------+---------------+---------------+
-|																|
-|	  						Wind speed							| 
-|																|
+|                                                               |
+|                           Wind speed                          |
+|                                                               |
 +---------------+---------------+---------------+---------------+
+</pre>
 
-72																104
+<pre>
+72                                                              104
 +---------------+---------------+---------------+---------------+
-|																|
-|	  						  Water								| 
-|																|
+|                                                               |
+|                             Water                             | 
+|                                                               |
 +---------------+---------------+---------------+---------------+
-
-104																136
+</pre>
+<pre>
+104                                                             136
 +---------------+---------------+---------------+---------------+
-|																|
-|	  						 Battery							| 
-|																|
+|                                                               |
+|                             Battery                           | 
+|                                                               |
 +---------------+---------------+---------------+---------------+
-
-136																168
+</pre>
+<pre>
+136                                                             168
 +---------------+---------------+---------------+---------------+
-|																|
-|	  						 Pressure							| 
-|																|
+|                                                               |
+|                           Pressure                            | 
+|                                                               |
 +---------------+---------------+---------------+---------------+
-
+</pre>
 
 Types d'unités :
 
-Id : numéro de la carte, entier non signé sur 8 bits
-Wind direction : direction du vent, en degré (0 à 360)
-Humidity : humidité relative, en pourcentage
-Temperature : temperature en celcius
-Wind speed : vitesse du vent, en km par heure
-Water : pluviométrie, en mm
-Battery : état de la batterie, en volt
-Pressure : pression, en hectopascal
+Id : numéro de la carte, entier non signé sur 8 bits<br>
+Wind direction : direction du vent, en degré (0 à 360)<br>
+Humidity : humidité relative, en pourcentage<br>
+Temperature : temperature en celcius<br>
+Wind speed : vitesse du vent, en km par heure<br>
+Water : pluviométrie, en mm<br>
+Battery : état de la batterie, en volt<br>
+Pressure : pression, en hectopascal<br>
 
 # Gateway 
 
-Fichiers pour la machine faisant office de passerelle qui permet l'envoie des données reçu par un récepteur branché en série sur un topic MQTT (ici SmartCampus/meteo).
+Fichiers pour la machine faisant office de passerelle qui permet l'envoie des données reçu par un récepteur branché en série sur un topic MQTT (ici SmartCampus/meteo).<br>
 Un dossier de log est disponible pour avoir des informations sur les problèmes rencontrés pendant les différents traitements du script python.
 
 # Server
