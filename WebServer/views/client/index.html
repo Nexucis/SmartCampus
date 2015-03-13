@@ -24,6 +24,9 @@ menu template for interface
         <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="/bower_components/leaflet/dist/leaflet.js"></script>
         <script src="/bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
+        <script src="/bower_components/highcharts/highcharts.js"></script>
+<!--        <script src="http://code.highcharts.com/modules/exporting.js"></script>-->
+        <script src="/js/drawGraph.js"></script>
 
 
         <script type="text/javascript" src="/js/translate.js"></script>
@@ -59,7 +62,7 @@ menu template for interface
                              "directionVent":"Nord",
                              "humidite":20,
                              "vitesseVent":0,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,0,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -78,7 +81,7 @@ menu template for interface
                              "directionVent":"Sud",
                              "humidite":60,
                              "vitesseVent":13,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,1,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -97,7 +100,7 @@ menu template for interface
                              "directionVent":"Sud",
                              "humidite":80,
                              "vitesseVent":50,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,2,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -116,7 +119,7 @@ menu template for interface
                              "directionVent":"Ouest",
                              "humidite":55,
                              "vitesseVent":30,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,3,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -135,7 +138,7 @@ menu template for interface
                              "directionVent":"Ouest",
                              "humidite":55,
                              "vitesseVent":30,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,4,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -170,7 +173,7 @@ menu template for interface
                              "directionVent":"Nord",
                              "humidite":30,
                              "vitesseVent":0,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,0,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -189,7 +192,7 @@ menu template for interface
                              "directionVent":"Sud",
                              "humidite":60,
                              "vitesseVent":13,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,1,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -208,7 +211,7 @@ menu template for interface
                              "directionVent":"Sud Est",
                              "humidite":98,
                              "vitesseVent":100,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,2,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -227,7 +230,7 @@ menu template for interface
                              "directionVent":"Ouest",
                              "humidite":157,
                              "vitesseVent":24,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,3,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");
@@ -246,7 +249,7 @@ menu template for interface
                              "directionVent":"Nord Ouest",
                              "humidite":100,
                              "vitesseVent":95,
-                             "date":Date.now(),
+                             "date":new Date(2015,2,13,4,0,0),
                          },
                          success: function(data, textStatus, jqXHR) {
                              console.log("injected data");

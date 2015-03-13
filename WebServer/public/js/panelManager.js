@@ -880,15 +880,6 @@ function buildPannelSensor(objElem){
     tmp += '<dt class="customTypo">Vitesse du vent</dt><dd class="badge pull-left">'+lastData.vitesseVent+'km/h<dd>';
     
     tmp += '</div>'
-    
-    
-    
-    $("#contentPanelSensors").append(tmp);
-    
-    
-    
-    
-    
+    $("#contentPanelSensors").append(tmp);    
+        
 }
-
-

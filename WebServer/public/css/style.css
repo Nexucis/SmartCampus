@@ -180,7 +180,6 @@ body {
 }
 .customTypo{
     display: block;
-    text-transform: uppercase;
     font-size: 14px;
     font-weight: 300;
     color: #fff;
@@ -194,4 +193,13 @@ body {
     font-weight: 700;
     font-size: 11px;
     margin-left: 10px;
+}
+.leaflet-popup{
+    width: 450px;
+}
+.leaflet-popup-content-wrapper{
+    background: linear-gradient(#2a2a2b,#3e3e40);
+}
+.leaflet-popup-tip{
+    background-color: #3e3e40;
 }
