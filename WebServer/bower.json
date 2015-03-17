@@ -1,13 +1,13 @@
 {
-  "name": "smartcampus.org",
+  "name": "opensmartcampus.org",
   "version": "0.1.0",
   "homepage": "https://github.com/Nexucis/SmartCampus",
   "authors": [
     "Paul Labat <labat.paul@gmail.com>",
-    "Jérôme Barbier",
-    "Rodolphe Fréby",
-    "Augustin Husson",
-    "Adji Sambe"
+    "Jérôme Barbier <jerome.barbier26@gmail.com>",
+    "Rodolphe Fréby <rfreby@gmail.com>",
+    "Augustin Husson <nexucis@gmail.com>",
+    "Adji Ndeye Ndate Sambe <sambe.adji@gmail.com>"
   ],
   "description": "Site web du projet SmartCampus 2015",
   "main": "index.html",
