@@ -1,17 +1,17 @@
-# Communication de carte ‡ carte
+# Communication de carte √† carte
 
-Fichiers utiles pour mettre en place la communication entre des shields LORA Mbed branchÈs sur des cartes STM32L152RE
+Fichiers utiles pour mettre en place la communication entre des shields LORA Mbed branch√©s sur des cartes STM32L152RE
 
-DiffÈrents dossiers sont disponibles :
+Diff√©rents dossiers sont disponibles :
 
 # Receiver
 
-Contient le code ‡ compiler et envoyer sur les cartes STM32L152RE pour Ítre le rÈcepteur.
-A rÈception d'un message, celui-ci est envoyÈ sur le port sÈrie.
+Contient le code √† compiler et envoyer sur les cartes STM32L152RE pour √™tre le r√©cepteur.
+A r√©ception d'un message, celui-ci est envoy√© sur le port s√©rie.
 
 # Transmitter
 
-Contient le code ‡ compiler et envoyer sur les cartes STM32L152RE pour Ítre l'Èmetteur.
+Contient le code √† compiler et envoyer sur les cartes STM32L152RE pour √™tre l'√©metteur.
 Le format d'envoie des messages est le suivant :
 
 <pre>
@@ -57,21 +57,27 @@ Le format d'envoie des messages est le suivant :
 +---------------+---------------+---------------+---------------+
 </pre>
 
-Types d'unitÈs :
+Types d'unit√©s :
 
-Id : numÈro de la carte, entier non signÈ sur 8 bits<br>
-Wind direction : direction du vent, en degrÈ (0 ‡ 360)<br>
-Humidity : humiditÈ relative, en pourcentage<br>
+Id : num√©ro de la carte, entier non sign√© sur 8 bits<br>
+Wind direction : direction du vent, en degr√© (0 √† 360)<br>
+Humidity : humidit√© relative, en pourcentage<br>
 Temperature : temperature en celcius<br>
 Wind speed : vitesse du vent, en km par heure<br>
-Water : pluviomÈtrie, en mm<br>
-Battery : Ètat de la batterie, en volt<br>
+Water : pluviom√©trie, en mm<br>
+Battery : √©tat de la batterie, en volt<br>
 Pressure : pression, en hectopascal<br>
 
 # Gateway 
 
-Fichiers pour la machine faisant office de passerelle qui permet l'envoie des donnÈes reÁu par un rÈcepteur branchÈ en sÈrie sur un topic MQTT (ici SmartCampus/meteo).<br>
-Un dossier de log est disponible pour avoir des informations sur les problËmes rencontrÈs pendant les diffÈrents traitements du script python.
+Fichiers pour la machine faisant office de passerelle qui permet l'envoie des donn√©es re√ßu par un r√©cepteur branch√© en s√©rie sur un topic MQTT (ici SmartCampus/meteo).<br>
+Le script demande √† l'utilisateur le port s√©rie sur lequel la carte est connect√©e. Il faut √©crire le nom en entier (par exemple COM3 pour Windows). Pour les utilisateurs de Linux, il ne faut pas oublier de taper le nom du port entre quotes simples ('). Script fonctionnant pour Linux, Mac et Windows.<br>
+Les donn√©es sont ensuite envoy√©es par MQTT sur le topic SmartCampus/meteo.<br>
+Un dossier de log est disponible pour avoir des informations sur les probl√®mes rencontr√©s pendant les diff√©rents traitements du script python.
 
 # Server
 
+Fichier pour la machine faisant office de serveur (stockage des donn√©es dans la base de donn√©e).<br>
+Le script s'inscrit sur le topic SmartCampus/meteo et r√©cup√®re les messages pour les parser. Ceux-ci doivent √™tre de la forme ID#DirectionDuVent#Humidite#Temperature#VitesseDuVent#Pluviometrie#Batterie#Pression. Le format des donn√©es est √©galement v√©rifi√©.<br>
+Les donn√©es sont enuite ins√©r√©es dans la base de donn√©e MongoDB.<br>
+Un dossier de log est disponible pour avoir des informations sur les probl√®mes rencontr√©s pendant les diff√©rents traitements du script python.
