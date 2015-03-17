@@ -33,8 +33,8 @@
              $("#test").append('<th>Item Operate</th>');
              while (item) {
                  console.log(item.name);
-                 balise = "c"+i;
-                 balise2 = "#c"+i;
+                 balise = 'c'+i;
+                 balise2 = '#c'+i;
                  truc = 
                  $("#test").append('<tr id="'+balise+'">');
                  $(balise2).append("<td>" + item.name +"</td>");
@@ -48,7 +48,7 @@
             '<a class="edit ml10" href="javascript:void(0)" title="Edit">'+
                 '<i class="glyphicon glyphicon-edit"></i>'+
             '</a>'+
-            '<a class="remove ml10" href="javascript:void(0)" title="Remove"'+ 'onclick="sensorDelete('+"'"+item.name+"',"+"'"+item.longitude+"',"+"'"+item.latitude+"',"+"'"+item.clefAES+"',"+"'"+item._id+"'"+')">'+
+            '<a class="remove ml10" href="javascript:void(0)" title="Remove"'+ 'onclick="sensorDelete('+"'"+item.name+"',"+"'"+item.longitude+"',"+"'"+item.latitude+"',"+"'"+item.clefAES+"',"+"'"+item._id+"',"+"'"+balise2+"'"+')">'+
                 '<i class="glyphicon glyphicon-remove"></i>'+
             '</a>'
             +'</td>');
@@ -60,7 +60,7 @@
         </script>
         
         <script type="text/javascript">
-        function sensorDelete(name,longitude,latitude,clefAES, id){
+        function sensorDelete(name,longitude,latitude,clefAES, id, tag){
             console.log("enter in request ajax");
             $.ajax({
                     type: "DELETE",
@@ -73,7 +73,7 @@
                         },
                     success: function () {
                         console.log("delete success : "+name);
-                        window.location.reload();
+                        $(tag).remove();
                     }
                 }); 
         }
