@@ -12,17 +12,23 @@
         <h1>Droits</h1>
 
         <p>Sélectionner un administrateur : </p>
+        
         <div class="row">
-            <div class="col-md-1">
-                <select id="admins_list" class="form-control" size=5 style="width: 15em"></select>
-            </div>
+              <div class="col-md-6"><button class="btn btn-lg btn-primary active" data-target="#myModal" data-toggle="modal">ON</button></div>
+              <div class="col-md-6"><button class="btn btn-lg btn-primary active" data-target="#myModal" data-toggle="modal">OFF</button></div>
         </div>
+        
+        
         <div class="row">
             <div class="col-md-4">
-                <div id="btn_onoff" class="btn-group btn-toggle"> 
-                    <button id="btn_on" class="btn btn-lg btn-default" data-target="#myModal" data-toggle="modal">ON</button>
-                    <button id="btn_off" class="btn btn-lg btn-primary active" data-target="#myModal" data-toggle="modal">OFF</button>
-                </div>
+                <select id="admins_list_on" class="form-control" size=5 style="width: 25em"></select>
+            </div>
+            <div class="col-md-2">
+                <button id="btn_on" class="btn btn-lg btn-primary active" data-target="#myModal" data-toggle="modal">>></button>
+                <button id="btn_off" class="btn btn-lg btn-primary active" data-target="#myModal" data-toggle="modal"><<</button>
+            </div>
+            <div class="col-md-4">
+                <select id="admins_list_off" class="form-control" size=5 style="width: 25em"></select>    
             </div>
         </div>
 

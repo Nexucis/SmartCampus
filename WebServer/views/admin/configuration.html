@@ -30,11 +30,11 @@
              $("#test").append('<th>Longitude</th>');
              $("#test").append('<th>Latitude</th>');
              $("#test").append('<th>Clef AES</th>');
-             $("#test").append('<th data-field="operate" data-formatter="operateFormatter" data-events="operateEvents">Item Operate</th>');
+             $("#test").append('<th>Item Operate</th>');
              while (item) {
                  console.log(item.name);
-                 balise = "c"+i;
-                 balise2 = "#c"+i;
+                 balise = 'c'+i;
+                 balise2 = '#c'+i;
                  truc = 
                  $("#test").append('<tr id="'+balise+'">');
                  $(balise2).append("<td>" + item.name +"</td>");
@@ -48,7 +48,7 @@
             '<a class="edit ml10" href="javascript:void(0)" title="Edit">'+
                 '<i class="glyphicon glyphicon-edit"></i>'+
             '</a>'+
-            '<a class="remove ml10" href="javascript:void(0)" title="Remove">'+
+            '<a class="remove ml10" href="javascript:void(0)" title="Remove"'+ 'onclick="sensorDelete('+"'"+item.name+"',"+"'"+item.longitude+"',"+"'"+item.latitude+"',"+"'"+item.clefAES+"',"+"'"+item._id+"',"+"'"+balise2+"'"+')">'+
                 '<i class="glyphicon glyphicon-remove"></i>'+
             '</a>'
             +'</td>');
@@ -57,22 +57,27 @@
              }
              $("#div_sensors").append('</table>');
         });
+        </script>
+        
+        <script type="text/javascript">
+        function sensorDelete(name,longitude,latitude,clefAES, id, tag){
+            console.log("enter in request ajax");
+            $.ajax({
+                    type: "DELETE",
+                    url: "http://localhost:9999/api/SensorsWireless",
+                    data : {"name": name,
+                            "latitude": latitude,
+                            "longitude": longitude,
+                            "clefAES": clefAES,
+                            "_id": id
+                        },
+                    success: function () {
+                        console.log("delete success : "+name);
+                        $(tag).remove();
 
-    window.operateEvents = {
-        'click .like': function (e, value, row, index) {
-            alert('You click like icon, row: ' + JSON.stringify(row));
-            console.log(value, row, index);
-        },
-        'click .edit': function (e, value, row, index) {
-            alert('You click edit icon, row: ' + JSON.stringify(row));
-            console.log(value, row, index);
-        },
-        'click .remove': function (e, value, row, index) {
-            alert('You click remove icon, row: ' + JSON.stringify(row));
-            console.log(value, row, index);
+                    }
+                }); 
         }
-    };
-
         </script>
     </body>
 </html>

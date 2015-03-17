@@ -21,7 +21,6 @@ import glob
 # Selection of the Serial port
 # Part of the code from stack overflow
 # http://stackoverflow.com/questions/12090503/listing-available-com-ports-with-python
-
 def serial_ports():
     if sys.platform.startswith('win'):
         ports = ['COM' + str(i + 1) for i in range(256)]
@@ -34,9 +33,9 @@ def serial_ports():
 
     else:
         time = datetime.datetime.now()
-        string = time.isoformat() + " : Error, operating system not supported\n" + str(e)
+        string = time.isoformat() + " : Error, operating system not supported (not Mac, Linux or Windows)\n" + str(e)
         logging.error(string)
-        print("Error, exiting...")
+        print("Error, operating system not supported, exiting...")
         sys.exit(-3)
 
     result = []
@@ -48,12 +47,9 @@ def serial_ports():
         except (OSError, serial.SerialException):
             pass
     return result
-
 # End of the stack overflow part
 
 # To read on the serial port
-
-
 def ReadSerie():
     try:
         ser = serial.Serial(serialPort, 9600, timeout=1)
@@ -63,7 +59,7 @@ def ReadSerie():
         time = datetime.datetime.now()
         string = time.isoformat() + " : Error, impossible to connect to the serial port\n" + str(e)
         logging.error(string)
-        print("Error, exiting...")
+        print("Error, impossible to connect to the serial port, exiting...")
         sys.exit(-2)
     result = ser.read(1024)
     ser.close()
@@ -96,7 +92,6 @@ def ReadSerie():
 # Program
 
 # Create log file
-
 if not os.path.exists("logs"):
     os.makedirs("logs")
 logging.basicConfig(filename='logs/scriptSerialMQTTLogs.log', level=logging.DEBUG)
@@ -106,20 +101,17 @@ logging.info(string)
 
 # Print and chose a serial
 # port
-
 print("List of serial ports : ")
 print(serial_ports())
 serialPort = input("Please enter the serial port where your device is connected (don't forget ' for linux users) : ")
 
 # For mqtt
-
 broker = "smartcampus2015.cloudapp.net"
 port = 1883
 topic = "SmartCampus/meteo"
 mqttc = paho.Client()
 
 # Connect to broker
-
 try:
     mqttc.connect(broker, port, 60)
 except Exception as e:
@@ -129,7 +121,7 @@ except Exception as e:
     time = datetime.datetime.now()
     string = time.isoformat() + " : Error, impossible to connect to the server\n" + str(e)
     logging.error(string)
-    print("Error, exiting...")
+    print("Error, impossible to connect to the server, exiting...")
     sys.exit(-1)
 
 while True:

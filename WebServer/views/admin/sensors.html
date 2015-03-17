@@ -100,7 +100,11 @@
                             "clefAES":document.forms[0].elements["aeskey"].value
                         },
                         success: function() {
-                            console.log("success");
+                            console.log("success!!");
+                            $('#sensorsId').val("");
+                            $('#latitude').val("");
+                            $('#longitude').val("");
+                            window.alert("Success");
                         }
                     });
                 } else{
