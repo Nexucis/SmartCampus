@@ -121,11 +121,25 @@ $.getJSON('/api/SensorsWireless/',
                 displayPanelInfoSensor();
         })
             .addTo(sensorLayer)
-            .bindPopup('<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>')
+            .bindPopup('<ul class="nav nav-pills"><li role="presentation"><a href="#" id="humidity">Humidité</a></li><li role="presentation"><a href="#" id="temperature">Température</a></li><li role="presentation"><a href="#" id="pression">Pression</a></li><li role="presentation"><a href="#" id="luminosite">Luminosité</a></li><li role="presentation"><a href="#" id="pluviometrie">Pluviométrie</a></li></ul><div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>')
             .on('click',function(e){
-            drawGraphTP(value);
-        })
-        ;
+                
+            $("#humidity").click(function(){
+                drawGraphHumidite(value);
+            });
+            $("#temperature").click(function(){
+                drawGraphTP(value);
+            });
+            $("#pression").click(function(){
+                drawGraphPression(value);
+            });
+            $("#luminosite").click(function(){
+                drawGraphLuminosite(value);
+            });
+            $("#pluviometrie").click(function(){
+                drawGraphPluviometrie(value);
+            });
+        });
     });
 });
 

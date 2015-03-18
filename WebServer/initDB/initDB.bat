@@ -13,4 +13,8 @@ echo "import entity"
 mongoimport --db Client --host localhost:27017 --collection entities < dbJSON\entities.json
 echo "import admin"
 mongoimport --db Client --host localhost:27017 --collection administrators < dbJSON\administrators.json
+echo "import sensorswireless_datas"
+mongoimport --db Client --host localhost:27017 --collection sensorswireless_datas < dbJSON/sensorswireless_datas.json
+echo "import sensorswireless_datas"
+mongoimport --db Client --host localhost:27017 --collection sensorswirelesses < dbJSON/sensorswirelesses.json
 )

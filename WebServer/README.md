@@ -301,12 +301,12 @@ Certains exemples sont disponibles dans le dossier /view
 
 
 ###Pagination
-Pagination est également supportée via skip= et limit= en paramètres de requête.
+La pagination est également supportée via skip= et limit= en paramètres de requête.
 
     http://localhost:9999/api/entity/$id?skip=10&limit=10
 
 ###Population
-Mongoose populate est supporté, mais sera bientôt modifié.
+Mongoose populate est supporté, mais sera bientôt modifié. Peut être utilisé de la façon suivante
 
     http://localhost:9999/api/entity?populate=items
 
@@ -338,10 +338,7 @@ Tri possible, 1 ascendant, -1 descendant
   http://localhost:9999/api/entity?sort=title:1,date:-1
 
 ###Transformer
-Transformers can be registered on startup.  A simple TransformerFactory is
-included.  Something that takes security into account could be added.  Currently
-this is only supported on the get operations.   May change the responses to post
-to send location, though I find that pretty inconvient.
+Les Transformers peuvent être enregistrés au démarrage. Un TransformerFactory simple est inclu. Il est possible d'ajouter de la sécurité. Cela n'est actuellement supporté que sur les opérations de type GET.
 
 
 ```javascript
@@ -350,11 +347,10 @@ app.use('/api', require('mers').rest({
     mongoose:mongoose,
     transformers:{
            renameid:function(Model, label){
-            //do some setup but return function.
               return function(obj){
                 obj.id = obj._id;
                 delete obj._id;
-                //don't forget to return the object.  Null will filter it from the results.
+                // Ne pas oublier de retourner l'objet.
                 return obj;
               }
            }
@@ -363,23 +359,22 @@ app.use('/api', require('mers').rest({
 }
 ```
 
-to get results transformered just add
+pour récupérer les résultats des transformed il suffit d'ajouter :
 
-     http://localhost:4242/api/entity?transform=renameid
+     http://localhost:9999/api/entity?transform=renameid
 
 
 
-It handles  get/put/post/delete.
-See tests/routes-mocha.js for examples.
+Prise en charge des requêtes get/put/post/delete.
+Consultez tests/routes-mocha.js pour des exemples.
 
 ###Static Finders
-It should also be able to be used with Class finders. Now handles class finders. Note: They must return  a query object.
-They are passed the query object and the rest of the url. All of the populate's, filters, transforms should work.
+Peut également être utilisé avec Class finders. Doit retourner un objet query.
 
 ```javascript
 
 /**
- * Note this must return a query object.
+ * Doit retourner un objet query.
  * @param q
  * @param term
  */
@@ -389,16 +384,16 @@ BlogPostSchema.statics.findTitleLike = function findTitleLike(q, term) {
 
 ```
 
-So you can get the url
+Il est possible de get l'url suivante
 
-    http://localhost:4242/api/entity/finder/findTitleLike?title=term
+    http://localhost:9999/api/entity/finder/findTitleLike?title=term
 
-or
+ou bien
 
-    http://localhost:4242/api/entity/finder/findTitleLike/term
+    http://localhost:9999/api/entity/finder/findTitleLike/term
 
 ### [Error Handling][error]
-To create a custom error handler
+Permet de créer un handler d'erreur personnalisé.
 
 ```javascript
 
@@ -413,7 +408,7 @@ To create a custom error handler
 ```
 
 ### Custom Transformers
-You can transform your results by adding a custom transformer and or adding a new TransformerFactory
+Il est possible de transformer les résultats en ajoutant un transformer personnalisé ou en ajoutant un nouveau TransformerFactory.
 
 ```javascript
 
@@ -423,14 +418,15 @@ You can transform your results by adding a custom transformer and or adding a ne
              return function(obj){
                     obj.id = obj._id;
                     delete obj._id;
-                    return obj; //returning null removes it from the output
+                    return obj; 
              }
           } }).rest());
 
 ```
 
 ### Selecting
-Selecting support is upcoming, but for now you can do it in finders
+
+Non disponible actuellement, mais possible à effectuer avec des finders.
 
 ```javascript
  var User = new Schema({

@@ -1,5 +1,6 @@
 #log folder
 PointToPoint/Gateway/logs/
+PointToPoint/Server/logs/
 
 # Object files
 *.o
