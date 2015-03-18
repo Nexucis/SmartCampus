@@ -78,6 +78,32 @@ var Administrator = new Schema({
     entity: [{type: Schema.Types.ObjectId, ref: 'Entity'}]
 });
 
+// same name for SensorsWireless and for SensorsWireless_Data with they are connected
+var SensorsWireless = new Schema({
+    id:ObjectId,
+    name:String,
+    latitude : Number,
+    longitude : Number,
+    clefAES:String
+
+});
+
+
+var SensorsWireless_Data = new Schema({
+    id:ObjectId,
+    name:String,
+    temperature:Number,
+    pression:Number,
+    luminosite:Number,
+    pluviometrie:Number,
+    directionVent:String,
+    humidite:Number,
+    vitesseVent:Number,
+    date:{type:Date, default:Date.now}
+    
+    
+});
+
 // models
 var EventModel = mongoose.model('Event', Event);
 var ItemModel = mongoose.model('Item', Item);
@@ -86,5 +112,7 @@ var AdministratorModel = mongoose.model('Administrator', Administrator);
 var CommentModel = mongoose.model('Comment', Comment);
 var MesureModel = mongoose.model('Mesure', Mesure);
 var Sensors_dataModel = mongoose.model('Sensors_data', Sensors_data);
+var SensorsWirelessModel = mongoose.model('SensorsWireless', SensorsWireless);
+var SensorsWirelessDataModel = mongoose.model('SensorsWireless_Data', SensorsWireless_Data);
 
 console.log('import model');
