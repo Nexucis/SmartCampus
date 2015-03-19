@@ -106,7 +106,7 @@ print(serial_ports())
 serialPort = input("Please enter the serial port where your device is connected (don't forget ' for linux users) : ")
 
 # For mqtt
-broker = "smartcampus2015.cloudapp.net"
+broker = "localhost"#"smartcampus2015.cloudapp.net"
 port = 1883
 topic = "SmartCampus/meteo"
 mqttc = paho.Client()

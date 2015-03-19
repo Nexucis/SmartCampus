@@ -141,14 +141,14 @@ int main()
                     debug("Sending a packet\r\n");
                     
                     // Setting data
-                    uint8_t id = 1;
-                    int windDirection = 250;
-                    int humidity = 3;
-                    long temperature = -4;
-                    float windSpeed = 14.12f;
-                    float water = 2.15f;
-                    float battery = 76.3f;
-                    float pressure = 34.59f;
+                    uint8_t id = rand() % 6 + 1;
+                    int windDirection = rand() % 360 + 1;
+                    int humidity = rand() % 10 + 50;
+                    long temperature = rand() % 4 + 22;
+                    float windSpeed = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/10));
+                    float water = (static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/40))) + 60;
+                    float battery = 100.0f;
+                    float pressure = (static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/50))) + 1000;
                     
                     // Convertion to uint8_t and packaging
                     
@@ -222,6 +222,7 @@ int main()
                         Buffer[i] = i - BufferSize;
                     }
                     wait_ms( 10 );  
+                    //Radio.getRSSI();
                     Radio.Send( Buffer, BufferSize );
                 }
         case TX_TIMEOUT:
