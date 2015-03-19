@@ -1,5 +1,5 @@
-Readme available in french and english
-Readme disponible en français et en anglais
+Readme available in french and english<br>
+Readme disponible en français et en anglais<br>
 
 #English
 
