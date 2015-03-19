@@ -124,19 +124,30 @@ function get_admins() {
                   function(data) {
             var admin = 0;
             while (data.payload[admin]) {
-                $("#admins_list").append(
-                    "<option value=\""
-                    + data.payload[admin]._id
-                    + "\">"
-                    + data.payload[admin].first_name + ' ' + data.payload[admin].name
-                    + "</option>"
-                );
+                if (data.payload[admin].entity.indexOf(current_entity) !== -1) {
+                    $("#admins_list_on").append(
+                        "<option value=\""
+                        + data.payload[admin]._id
+                        + "\">"
+                        + data.payload[admin].first_name + ' ' + data.payload[admin].name
+                        + "</option>"
+                    ); 
+                } else {
+                    $("#admins_list_off").append(
+                        "<option value=\""
+                        + data.payload[admin]._id
+                        + "\">"
+                        + data.payload[admin].first_name + ' ' + data.payload[admin].name
+                        + "</option>"
+                    );
+                }
                 admin++;
             }
-            $("#admins_list").change(function() {
-                $.getJSON('/api/administrator/' + $("#admins_list").val(),
+            $("#admins_list_off").change(function() {
+                $.getJSON('/api/administrator/' + $("#admins_list_off").val(),
                           function(selection) {
                     selectedAdmin = selection;
+                    console.log("off :"+selectedAdmin);
                     $("#admin_descr").html(selection.payload.first_name + ' ' + selection.payload.name);
                     if (selection.payload.entity.indexOf(current_entity) !== -1) {
                         admin_switch_set_to("on");
@@ -145,6 +156,53 @@ function get_admins() {
                     }
                 });
             });
+            $("#admins_list_on").change(function() {
+                $.getJSON('/api/administrator/' + $("#admins_list_on").val(),
+                          function(selection) {
+                    selectedAdmin = selection;
+                    console.log("on :"+selectedAdmin);
+                    $("#admin_descr").html(selection.payload.first_name + ' ' + selection.payload.name);
+                    if (selection.payload.entity.indexOf(current_entity) !== -1) {
+                        admin_switch_set_to("on");
+                    } else {
+                        admin_switch_set_to("off");
+                    }
+                });
+            });
+            $("#btn_delete").click(function() {
+                console.log("in delete");
+                if (selectedAdmin) {
+                    var i = 0;
+                    while (data.payload[i]._id!=selectedAdmin.payload._id) {
+                        i++;
+                    }
+
+                    console.log("id : "+data.payload[i]._id);
+
+                    if (data.payload[i].entity.indexOf(current_entity) !== -1) {
+                        $('#admins_list_on option[value='+'"'+data.payload[i]._id+'"]').remove();
+                        console.log("delete1234");
+                    } else {
+                        $('#admins_list_off option[value='+'"'+data.payload[i]._id+'"]').remove();
+                        console.log("delete1235");
+                    }
+
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:9999/api/administrator",
+                        data : {"name": selectedAdmin.payload.prenom,
+                                "first_name": selectedAdmin.payload.nom,
+                                "login": selectedAdmin.payload.login,
+                                "password": selectedAdmin.payload.password,
+                                "_id": selectedAdmin.payload._id
+                               },
+                        success: function () {
+                            console.log("delete success!");
+                        }
+                    });
+                }
+            });
+
             $("#btn_onoff").click(function() {
                 if (selectedAdmin) {
                     toggle_switch();
@@ -157,6 +215,16 @@ function get_admins() {
                             success: function(data) {
                                 show_modal("Ajout des droits", selectedAdmin.payload.login + " est maintenant administrateur de "
                                            + current_entity_name);
+
+                                $("#admins_list_on").append(
+                                    "<option value=\""
+                                    + selectedAdmin.payload._id
+                                    + "\">"
+                                    + selectedAdmin.payload.first_name + ' ' + selectedAdmin.payload.name
+                                    + "</option>"
+                                ); 
+                                $('#admins_list_off option[value='+'"'+selectedAdmin.payload._id+'"]').remove();
+
                             },
                             error: function() {
                                 show_modal("Ajout des droits", "Erreur !");
@@ -173,6 +241,16 @@ function get_admins() {
                             success: function(data) {
                                 show_modal("Retrait des droits", selectedAdmin.payload.login + " n'est plus administrateur de "
                                            + current_entity_name);
+
+                                $("#admins_list_off").append(
+                                    "<option value=\""
+                                    + selectedAdmin.payload._id
+                                    + "\">"
+                                    + selectedAdmin.payload.first_name + ' ' + selectedAdmin.payload.name
+                                    + "</option>"
+                                ); 
+                                $('#admins_list_on option[value='+'"'+selectedAdmin.payload._id+'"]').remove();
+
                             },
                             error: function() {
                                 show_modal("Retrait des droits", "Erreur !");
@@ -181,10 +259,10 @@ function get_admins() {
                     }
                 }
             });
-        }
-                 );
+        });
     }
 }
+
 
 function admin_switch_set_to(value) {
     if (($("#btn_on").hasClass('active') && value === "off") ||
@@ -243,4 +321,3 @@ function show_modal(title, text) {
     $("#div_modal_body").html(text);
     $("#div_modal_title").html(title);
 }
-

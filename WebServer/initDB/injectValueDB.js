@@ -2,80 +2,45 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function findIdLastMesureToAddToSensor(doc){
-	//mettre 1 pour avoir le plus vieux, -1 pour le plus récent
-	MesureModel.findOne({}, {}, { sort: { 'date' : -1 } }, function(err, mesure) {
-			var tabMesure = doc.mesure;
-			tabMesure.push(mesure._id);
-			doc.mesure = tabMesure;
-  			doc.save();
-			console.log("update sensor with some mesure");
-		});
-}
-
-// on suppose que le nom du capteur est unique
-function addMesureToSensor(name){
-	Sensors_dataModel.findOne({identifiant: name }, 
-		function (err, doc){
-			if(err){
-				throw(err);
-			}
-			if (doc === null){
-				throw("error : sensor with name : " +name+" isn't found");
-				
-			}
-			console.log("the sensor with name : "+name+" is found");
-
-			findIdLastMesureToAddToSensor(doc);
-			
-			
-  		}
-	);
-
-	
-}
-
-function addMesureToRandomSensor(){
-	//liste des noms des capteurs --> ils doivent être uniques
-	var tab = ["captor1","RUFramboisierehumidite","PolytechBureauDDhumidite","CROUSDortoirChambreMBairQualite"];
-	var nameSensor =  tab[getRandomInt(0,4)];
-	
-	addMesureToSensor(nameSensor);
-}
-
-function injectTemperature(){
-	var random = getRandomInt(-10,30);
-	var degree = new MesureModel({
-		value : random,
-		unite : "C"
-	});
-	degree.save(function (err) {
-  		if (err) { throw err; }
-  		console.log('temperature : '+random+' °C is added !');
-	});
-	addMesureToRandomSensor();
-}
-
-function injectPression(){
-	var random = getRandomInt(1013,1015);
-	var degree = new MesureModel({
-		value : random,
-		unite : "hPa"
-	});
-	degree.save(function (err) {
-  		if (err) { throw err; }
-  		console.log('pression : '+random+' hPa is added !');
-	});
-	addMesureToRandomSensor();
+function injectData(name,h,j){
+    var dir = ["N","NE","E","SE","S","SO","O","NO"];
+    var pression = getRandomInt(1000,1050);
+    var temperature = getRandomInt(-10,30);
+    var luminosite = getRandomInt(0,1500);
+    var pluviometrie = getRandomInt(0,500);
+    var directionVent = dir[getRandomInt(0,7)];
+    var humidite = getRandomInt(0,100);
+    var vitesseVent = getRandomInt(0,100);
+    var date = new Date(2015,3,1+j,h,0,0);
+    
+    var data = new SensorsWirelessDataModel({
+            name:name,
+            temperature:temperature,
+            pression:pression,
+            luminosite:luminosite,
+            pluviometrie:pluviometrie,
+            directionVent:directionVent,
+            humidite:humidite,
+            vitesseVent:vitesseVent,
+            date:date
+    });
+    
+    data.save(function (err){
+        if(err){throw err;}
+        console.log("add some data");
+    });
 }
 
 function injectManyMesure(nbT,delay){
 	var i = 0;
-	var tab = [injectPression,injectTemperature];
+    var j = 0;
 	while (nbT > 0){
 		//setTimeout est non blocant
-		setTimeout(tab[getRandomInt(0,2)], delay*i);
+		setTimeout(function(){injectData(1,i%24,j)}, delay*i);
 		i++;
+        if((i%24) ===0){
+            j++;
+        }
 		nbT--;
 	}
 	setTimeout(stopDB, delay*i);
@@ -116,7 +81,7 @@ function main(){
 
 	console.log('connection is successed with db');
 //injection de valeur de température
-	var nbT = 10;
+	var nbT = 100;
 	var delay = 5000;
 	injectManyMesure(nbT,delay);
 }

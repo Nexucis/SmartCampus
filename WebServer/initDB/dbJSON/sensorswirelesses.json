@@ -1,0 +1,2 @@
+{ "name" : "1", "latitude" : 45.2, "longitude" : 5.8, "clefAES" : "ABCDEF123", "_id" : { "$oid" : "550972f82294805e14ee8b27" }, "__v" : 0 }
+{ "name" : "2", "latitude" : 45.15, "longitude" : 5.7, "clefAES" : "ABCDEF456", "_id" : { "$oid" : "550972f82294805e14ee8b2d" }, "__v" : 0 }

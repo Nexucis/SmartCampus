@@ -78,7 +78,7 @@ var Administrator = new Schema({
     entity: [{type: Schema.Types.ObjectId, ref: 'Entity'}]
 });
 
-
+// same name for SensorsWireless and for SensorsWireless_Data with they are connected
 var SensorsWireless = new Schema({
     id:ObjectId,
     name:String,

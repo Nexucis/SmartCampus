@@ -13,3 +13,7 @@ mongoimport --db Client --host localhost:27017 --collection items < dbJSON/items
 mongoimport --db Client --host localhost:27017 --collection entities < dbJSON/entities.json
  #import admin
 mongoimport --db Client --host localhost:27017 --collection administrators < dbJSON/administrators.json
+ #import sensorswireless_datas
+mongoimport --db Client --host localhost:27017 --collection sensorswireless_datas < dbJSON/sensorswireless_datas.json
+ #import sensorswireless_datas
+mongoimport --db Client --host localhost:27017 --collection sensorswirelesses < dbJSON/sensorswirelesses.json
