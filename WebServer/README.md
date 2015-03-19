@@ -12,10 +12,11 @@ NodeJS
 ----------
  For Linux (Currently doesn't work on Windows) :
  Download source http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz
-    ./configure
-    make
-    sudo make install
- 
+ <pre>
+ ./configure
+ make
+ sudo make install
+ </pre>
 Bower
 ----------
     sudo npm install -g bower
@@ -30,6 +31,9 @@ Launch (default port : 9999)
 -----------
 
     node serveur.js
+    
+    Admin interface : http://localhost:9999/admin
+    Client interface : http://localhost:9999/client
 
 Init database
 --------------
@@ -234,9 +238,11 @@ NodeJS
 ----------
  Pour Linux (Ne fonctionne pas encore sous Windows, problème de plugins) :
  Télécharger les sources http://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz
-    ./configure
-    make
-    sudo make install
+ <pre>
+ ./configure
+ make
+ sudo make install
+ </pre>
  
 Bower
 ----------
@@ -252,6 +258,9 @@ Lancement (port par défaut : 9999)
 -----------
 
     node serveur.js
+    
+    Interface administrateur : http://localhost:9999/admin
+    Interface client : http://localhost:9999/client
 
 Initialisation de la base de données
 --------------
