@@ -92,7 +92,7 @@
                 if((name !== "")&&(longitude !== "")&&(!isNaN(longitude))&&(latitude !== "")&&(!isNaN(latitude))){
 
                     jQuery.ajax({
-                        url: "http://localhost:9999/api/SensorsWireless",
+                        url: "/api/SensorsWireless",
                         type: 'POST',
                         data: {"name": name,
                             "latitude": latitude,

@@ -135,7 +135,7 @@
             if((nom !== "")&&(prenom !== "")&&(password !== "")){
 
                 jQuery.ajax({
-                    url: "http://localhost:9999/api/administrator/",
+                    url: "/api/administrator/",
                     type: 'POST',
                     data: {"name": prenom,
                            "first_name": name,
