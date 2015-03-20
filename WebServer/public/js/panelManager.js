@@ -840,9 +840,9 @@ function showModalHelp(htmlNodeToAppend) {
 * Affichage des dernieres donnees d'un capteur dans le panel
 */
 function buildPannelSensor(objElem){
-    
+
     $("#titleSensors").html("Info capteurs n°"+objElem.name);
-    
+
 
     cleanChildOfNodeID("contentPanelSensors");
     var sensorsData;
@@ -857,20 +857,30 @@ function buildPannelSensor(objElem){
             console.log(err);
         }
     });
-    
+
     var lastData = [];
     sensorsData.forEach(function(elem, index, array){
         if(elem.name === objElem.name){
             lastData.push(elem);
         }
     });
-    
+
     var lastData = lastData[lastData.length-1];
-    var updateTime = '<div class="pull-right">Last update : '+lastData.date.toString()+'</div><br><br><br>';
+    var lastDate = {
+        year : new Date(lastData.date).getFullYear(),
+        month : new Date(lastData.date).getMonth(),
+        day : new Date(lastData.date).getDate(),
+        hour : new Date(lastData.date).getHours(),
+        minutes : new Date(lastData.date).getMinutes(),
+        seconds : new Date(lastData.date).getSeconds()
+
+    };
+    
+    var updateTime = '<div class="pull-right">Last update : '+lastDate.hour+'h '+lastDate.minutes+'min '+lastDate.seconds+'s le '+lastDate.day+'/'+lastDate.month+'/'+lastDate.year+'</div><br><br><br>';
     $("#contentPanelSensors").append(updateTime);
-    
+
     var tmp = '<dl class="dl-horizontal">';
-    
+
     tmp += '<dt class="customTypo">Temperature</dt><dd class="badge pull-left">'+lastData.temperature+'°C<dd>';
     tmp += '<dt class="customTypo">Humidité</dt><dd class="badge pull-left">'+lastData.humidite+'%<dd>';
     tmp += '<dt class="customTypo">Pression</dt><dd class="badge pull-left">'+lastData.pression+'hPa<dd>';
@@ -878,8 +888,8 @@ function buildPannelSensor(objElem){
     tmp += '<dt class="customTypo">Pluviométrie</dt><dd class="badge pull-left">'+lastData.pluviometrie+'mm<dd>';
     tmp += '<dt class="customTypo">Direction du vent</dt><dd class="badge pull-left">'+lastData.directionVent+'<dd>';
     tmp += '<dt class="customTypo">Vitesse du vent</dt><dd class="badge pull-left">'+lastData.vitesseVent+'km/h<dd>';
-    
+
     tmp += '</div>'
     $("#contentPanelSensors").append(tmp);    
-        
+
 }

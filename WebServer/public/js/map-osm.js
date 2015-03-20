@@ -6,7 +6,7 @@
 
 var map = L.map('map-canvas').setView([45.19, 5.76], 14)
 .on('click',function(e){
-hidePanel();
+    hidePanel();
 });
 
 var mapboxUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
@@ -121,23 +121,35 @@ $.getJSON('/api/SensorsWireless/',
                 displayPanelInfoSensor();
         })
             .addTo(sensorLayer)
-            .bindPopup('<ul class="nav nav-pills"><li role="presentation"><a href="#" id="humidity">Humidité</a></li><li role="presentation"><a href="#" id="temperature">Température</a></li><li role="presentation"><a href="#" id="pression">Pression</a></li><li role="presentation"><a href="#" id="luminosite">Luminosité</a></li><li role="presentation"><a href="#" id="pluviometrie">Pluviométrie</a></li></ul><div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>')
+            .bindPopup('<ul class="nav nav-pills">\
+<li role="presentation"><a href="#" id="humidity">Humidité</a></li>\
+<li role="presentation"><a href="#" id="temperature">Température</a></li>\
+<li role="presentation"><a href="#" id="pression">Pression</a></li>\
+<li role="presentation"><a href="#" id="luminosite">Luminosité</a></li>\
+<li role="presentation"><a href="#" id="pluviometrie">Pluviométrie</a></li>\
+<li role="presentation"><a href="#" id="vitesseVent">Vitesse Vent</a></li>\
+</ul>\
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>')
             .on('click',function(e){
-                
+            drawGraph(value, "Humidité");
+
             $("#humidity").click(function(){
-                drawGraphHumidite(value);
+                drawGraph(value, "Humidité");
             });
             $("#temperature").click(function(){
-                drawGraphTP(value);
+                drawGraph(value, "Température");
             });
             $("#pression").click(function(){
-                drawGraphPression(value);
+                drawGraph(value, "Pression");
             });
             $("#luminosite").click(function(){
-                drawGraphLuminosite(value);
+                drawGraph(value, "Luminosité");
             });
             $("#pluviometrie").click(function(){
-                drawGraphPluviometrie(value);
+                drawGraph(value, "Pluviométrie");
+            }); 
+            $("#vitesseVent").click(function(){
+                drawGraph(value, "Vitesse du vent");
             });
         });
     });
@@ -203,14 +215,14 @@ function displayPanelInfoPOI(){
 function hidePanel(){
     if($("#panelTwitter").is(":visible"))
         $("#panelTwitter").toggle("slide",{ direction: "right" });
-    
+
     if($("#panelPOI").is(":visible"))
         $("#panelPOI").toggle("slide",{ direction: "right" });
-    
+
     if($("#panelInfoSensors").is(":visible"))
         $("#panelInfoSensors").toggle("slide",{ direction: "right" });
-    
+
 }
-    
-    
-    
+
+
+

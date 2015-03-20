@@ -210,184 +210,7 @@ function loadHighchartsTheme(){
 
 }
 
-
-
-function drawGraphTP(objElem) {
-
-    loadHighchartsTheme();
-    
-    var sensorsData;
-    jQuery.ajax({
-        type: 'GET',
-        async: false,
-        url: "/api/sensorsWireless_Data/",
-        success: function(data) {
-            sensorsData = data.payload;
-        },
-        error: function(err) {
-            console.log(err);
-        }
-    });    
-    var lastData = [];
-    sensorsData.forEach(function(elem, index, array){
-        if(elem.name === objElem.name){
-            lastData.push([new Date(elem.date),elem.temperature]);
-        }
-    });
-    var lastDate = {
-        year : new Date(lastData[0][0]).getFullYear(),
-        month : new Date(lastData[0][0]).getMonth(),
-        day : new Date(lastData[0][0]).getDate(),
-        hour : new Date(lastData[0][0]).getHours(),
-        minutes : new Date(lastData[0][0]).getMinutes(),
-        seconds : new Date(lastData[0][0]).getSeconds()
-
-    };
-    $('#container').highcharts({
-        chart: {
-            zoomType: 'x'
-        },
-        title: {
-            text: 'Graphe de la température du capteur n°'+objElem.name
-        },
-        subtitle: {
-            text: document.ontouchstart === undefined ?
-            'Click and drag in the plot area to zoom in' :
-            'Pinch the chart to zoom in'
-        },
-        xAxis: {
-            type: 'datetime',
-            minRange: 24 * 3600000, // 1 days
-            maxRange : 2*24*3600000
-        },
-        yAxis: {
-            title: {
-                text: 'Température'
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            area: {
-                fillColor: {
-                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                    ]
-                },
-                marker: {
-                    radius: 2
-                },
-                lineWidth: 1,
-                states: {
-                    hover: {
-                        lineWidth: 1
-                    }
-                },
-                threshold: null
-            }
-        },
-
-        series: [{
-            type: 'area',
-            name: 'temperature',
-            pointInterval: 1 * 3600 * 1000,
-            pointStart: Date.UTC(lastDate.year, lastDate.month, lastDate.day, lastDate.hour, lastDate.minutes, lastDate.seconds),
-            data: lastData
-        }]
-    });
-}
-
-function drawGraphPression(objElem){
-   loadHighchartsTheme();
-
-    var sensorsData;
-    jQuery.ajax({
-        type: 'GET',
-        async: false,
-        url: "/api/sensorsWireless_Data/",
-        success: function(data) {
-            sensorsData = data.payload;
-        },
-        error: function(err) {
-            console.log(err);
-        }
-    });    
-    var lastData = [];
-    sensorsData.forEach(function(elem, index, array){
-        if(elem.name === objElem.name){
-            lastData.push([new Date(elem.date),elem.pression]);
-        }
-    });
-    var lastDate = {
-        year : new Date(lastData[0][0]).getFullYear(),
-        month : new Date(lastData[0][0]).getMonth(),
-        day : new Date(lastData[0][0]).getDate(),
-        hour : new Date(lastData[0][0]).getHours(),
-        minutes : new Date(lastData[0][0]).getMinutes(),
-        seconds : new Date(lastData[0][0]).getSeconds()
-
-    };
-    $('#container').highcharts({
-        chart: {
-            zoomType: 'x'
-        },
-        title: {
-            text: 'Graphe de la pression du capteur n°'+objElem.name
-        },
-        subtitle: {
-            text: document.ontouchstart === undefined ?
-            'Click and drag in the plot area to zoom in' :
-            'Pinch the chart to zoom in'
-        },
-        xAxis: {
-            type: 'datetime',
-            minRange: 24 * 3600000, // 1 days
-            maxRange : 2*24*3600000
-        },
-        yAxis: {
-            title: {
-                text: 'Pression'
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            area: {
-                fillColor: {
-                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                    ]
-                },
-                marker: {
-                    radius: 2
-                },
-                lineWidth: 1,
-                states: {
-                    hover: {
-                        lineWidth: 1
-                    }
-                },
-                threshold: null
-            }
-        },
-
-        series: [{
-            type: 'area',
-            name: 'pression',
-            pointInterval: 1 * 3600 * 1000,
-            pointStart: Date.UTC(lastDate.year, lastDate.month, lastDate.day, lastDate.hour, lastDate.minutes, lastDate.seconds),
-            data: lastData
-        }]
-    });
-}
-
-function drawGraphLuminosite(objElem){
+function drawGraph(objElem, type){
     loadHighchartsTheme();
 
     var sensorsData;
@@ -405,7 +228,19 @@ function drawGraphLuminosite(objElem){
     var lastData = [];
     sensorsData.forEach(function(elem, index, array){
         if(elem.name === objElem.name){
-            lastData.push([new Date(elem.date),elem.luminosite]);
+            if(type === "Vitesse du vent"){
+                lastData.push([new Date(elem.date),elem.vitesseVent]);
+            } else if (type === "Pluviométrie"){
+                lastData.push([new Date(elem.date),elem.pluviometrie]);
+            }else if (type === "Luminosité"){
+                lastData.push([new Date(elem.date),elem.luminosite]);
+            }else if (type === "Pression"){
+                lastData.push([new Date(elem.date),elem.pression]);
+            }else if (type === "Température"){
+                lastData.push([new Date(elem.date),elem.temperature]);
+            }else if (type === "Humidité"){
+                lastData.push([new Date(elem.date),elem.humidite]);
+            }
         }
     });
     var lastDate = {
@@ -422,7 +257,7 @@ function drawGraphLuminosite(objElem){
             zoomType: 'x'
         },
         title: {
-            text: 'Graphe de la luminosité du capteur n°'+objElem.name
+            text: 'Capteur n°'+objElem.name +' '+type 
         },
         subtitle: {
             text: document.ontouchstart === undefined ?
@@ -436,7 +271,7 @@ function drawGraphLuminosite(objElem){
         },
         yAxis: {
             title: {
-                text: 'Luminosité'
+                text: type
             }
         },
         legend: {
@@ -466,93 +301,7 @@ function drawGraphLuminosite(objElem){
 
         series: [{
             type: 'area',
-            name: 'luminosité',
-            pointInterval: 1 * 3600 * 1000,
-            pointStart: Date.UTC(lastDate.year, lastDate.month, lastDate.day, lastDate.hour, lastDate.minutes, lastDate.seconds),
-            data: lastData
-        }]
-    });
-}
-function drawGraphHumidite(objElem){
-    loadHighchartsTheme();
-
-    var sensorsData;
-    jQuery.ajax({
-        type: 'GET',
-        async: false,
-        url: "/api/sensorsWireless_Data/",
-        success: function(data) {
-            sensorsData = data.payload;
-        },
-        error: function(err) {
-            console.log(err);
-        }
-    });    
-    var lastData = [];
-    sensorsData.forEach(function(elem, index, array){
-        if(elem.name === objElem.name){
-            lastData.push([new Date(elem.date),elem.humidite]);
-        }
-    });
-    var lastDate = {
-        year : new Date(lastData[0][0]).getFullYear(),
-        month : new Date(lastData[0][0]).getMonth(),
-        day : new Date(lastData[0][0]).getDate(),
-        hour : new Date(lastData[0][0]).getHours(),
-        minutes : new Date(lastData[0][0]).getMinutes(),
-        seconds : new Date(lastData[0][0]).getSeconds()
-
-    };
-    $('#container').highcharts({
-        chart: {
-            zoomType: 'x'
-        },
-        title: {
-            text: 'Graphe de l\'humidité du capteur n°'+objElem.name
-        },
-        subtitle: {
-            text: document.ontouchstart === undefined ?
-            'Click and drag in the plot area to zoom in' :
-            'Pinch the chart to zoom in'
-        },
-        xAxis: {
-            type: 'datetime',
-            minRange: 24 * 3600000, // 1 days
-            maxRange : 2*24*3600000
-        },
-        yAxis: {
-            title: {
-                text: 'Humididté'
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            area: {
-                fillColor: {
-                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                    ]
-                },
-                marker: {
-                    radius: 2
-                },
-                lineWidth: 1,
-                states: {
-                    hover: {
-                        lineWidth: 1
-                    }
-                },
-                threshold: null
-            }
-        },
-
-        series: [{
-            type: 'area',
-            name: 'humidité',
+            name: type,
             pointInterval: 1 * 3600 * 1000,
             pointStart: Date.UTC(lastDate.year, lastDate.month, lastDate.day, lastDate.hour, lastDate.minutes, lastDate.seconds),
             data: lastData
@@ -560,89 +309,3 @@ function drawGraphHumidite(objElem){
     });
 }
 
-function drawGraphPluviometrie(objElem){
-    loadHighchartsTheme();
-
-    var sensorsData;
-    jQuery.ajax({
-        type: 'GET',
-        async: false,
-        url: "/api/sensorsWireless_Data/",
-        success: function(data) {
-            sensorsData = data.payload;
-        },
-        error: function(err) {
-            console.log(err);
-        }
-    });    
-    var lastData = [];
-    sensorsData.forEach(function(elem, index, array){
-        if(elem.name === objElem.name){
-            lastData.push([new Date(elem.date),elem.pluviometrie]);
-        }
-    });
-    var lastDate = {
-        year : new Date(lastData[0][0]).getFullYear(),
-        month : new Date(lastData[0][0]).getMonth(),
-        day : new Date(lastData[0][0]).getDate(),
-        hour : new Date(lastData[0][0]).getHours(),
-        minutes : new Date(lastData[0][0]).getMinutes(),
-        seconds : new Date(lastData[0][0]).getSeconds()
-
-    };
-    $('#container').highcharts({
-        chart: {
-            zoomType: 'x'
-        },
-        title: {
-            text: 'Graphe de la pluviométrie du capteur n°'+objElem.name
-        },
-        subtitle: {
-            text: document.ontouchstart === undefined ?
-            'Click and drag in the plot area to zoom in' :
-            'Pinch the chart to zoom in'
-        },
-        xAxis: {
-            type: 'datetime',
-            minRange: 24 * 3600000, // 1 days
-            maxRange : 2*24*3600000
-        },
-        yAxis: {
-            title: {
-                text: 'Pluviométrie'
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            area: {
-                fillColor: {
-                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                    ]
-                },
-                marker: {
-                    radius: 2
-                },
-                lineWidth: 1,
-                states: {
-                    hover: {
-                        lineWidth: 1
-                    }
-                },
-                threshold: null
-            }
-        },
-
-        series: [{
-            type: 'area',
-            name: 'pluviométrie',
-            pointInterval: 1 * 3600 * 1000,
-            pointStart: Date.UTC(lastDate.year, lastDate.month, lastDate.day, lastDate.hour, lastDate.minutes, lastDate.seconds),
-            data: lastData
-        }]
-    });
-}
