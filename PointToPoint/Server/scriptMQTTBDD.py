@@ -47,7 +47,7 @@ def process(msg) :
 
         clientMONGO = MongoClient('localhost', 27017)
         db = clientMONGO.Client
-        collection = db.SensorsWireless_Data
+        collection = db.sensorswireless_datas
 
         post = {"name" : str(s[0]),
                 "temperature" :s[3],
@@ -89,7 +89,7 @@ string = time.isoformat() + " : Starting of the MQTT-Mongo script"
 logging.info(string)
 
 #MQTT configuration
-broker = "smartcampus2015.cloudapp.net"
+broker = "85.190.181.46"
 topic = "SmartCampus/meteo"
 port = 1883
 clientMQTT = paho.Client()
