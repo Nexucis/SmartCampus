@@ -228,19 +228,30 @@ function drawGraph(objElem, type){
     var lastData = [];
     sensorsData.forEach(function(elem, index, array){
         if(elem.name === objElem.name){
+            var dataDate = {
+                year : new Date(elem.date).getFullYear(),
+                month : new Date(elem.date).getMonth(),
+                day : new Date(elem.date).getDate(),
+                hour : new Date(elem.date).getHours(),
+                minutes : new Date(elem.date).getMinutes(),
+                seconds : new Date(elem.date).getSeconds()
+
+            };
+        
             if(type === "Vitesse du vent"){
-                lastData.push([new Date(elem.date),elem.vitesseVent]);
+                lastData.push([Date.UTC(dataDate.year,dataDate.month,dataDate.day, dataDate.hour, dataDate.minutes,dataDate.seconds),elem.vitesseVent]);
             } else if (type === "Pluviométrie"){
-                lastData.push([new Date(elem.date),elem.pluviometrie]);
+                lastData.push([Date.UTC(dataDate.year,dataDate.month,dataDate.day, dataDate.hour, dataDate.minutes,dataDate.seconds),elem.pluviometrie]);
             }else if (type === "Luminosité"){
-                lastData.push([new Date(elem.date),elem.luminosite]);
+                lastData.push([Date.UTC(dataDate.year,dataDate.month,dataDate.day, dataDate.hour, dataDate.minutes,dataDate.seconds),elem.luminosite]);
             }else if (type === "Pression"){
-                lastData.push([new Date(elem.date),elem.pression]);
+                lastData.push([Date.UTC(dataDate.year,dataDate.month,dataDate.day, dataDate.hour, dataDate.minutes,dataDate.seconds),elem.pression]);
             }else if (type === "Température"){
-                lastData.push([new Date(elem.date),elem.temperature]);
+                lastData.push([Date.UTC(dataDate.year,dataDate.month,dataDate.day, dataDate.hour, dataDate.minutes,dataDate.seconds),elem.temperature]);
             }else if (type === "Humidité"){
-                lastData.push([new Date(elem.date),elem.humidite]);
+                lastData.push([Date.UTC(dataDate.year,dataDate.month,dataDate.day, dataDate.hour, dataDate.minutes,dataDate.seconds),elem.humidite]);
             }
+            
         }
     });
     var lastDate = {
@@ -265,9 +276,7 @@ function drawGraph(objElem, type){
             'Pinch the chart to zoom in'
         },
         xAxis: {
-            type: 'datetime',
-            minRange: 24 * 3600000, // 1 days
-            maxRange : 2*24*3600000
+            type: 'datetime'
         },
         yAxis: {
             title: {
@@ -302,8 +311,6 @@ function drawGraph(objElem, type){
         series: [{
             type: 'area',
             name: type,
-            pointInterval: 1 * 3600 * 1000,
-            pointStart: Date.UTC(lastDate.year, lastDate.month, lastDate.day, lastDate.hour, lastDate.minutes, lastDate.seconds),
             data: lastData
         }]
     });
