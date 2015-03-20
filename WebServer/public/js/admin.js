@@ -189,7 +189,7 @@ function get_admins() {
 
                     $.ajax({
                         type: "DELETE",
-                        url: "http://localhost:9999/api/administrator",
+                        url: "/api/administrator",
                         data : {"name": selectedAdmin.payload.prenom,
                                 "first_name": selectedAdmin.payload.nom,
                                 "login": selectedAdmin.payload.login,
