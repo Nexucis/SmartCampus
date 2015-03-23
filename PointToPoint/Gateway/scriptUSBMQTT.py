@@ -78,6 +78,7 @@ def ReadSerie():
         logging.warning(string)
     elif s == "ERROR":
         # Create a log report
+        time = datetime.datetime.now()
         print("Error during the transmission")
         string = time.isoformat() + " : Error during the transmission"
         logging.error(string)
