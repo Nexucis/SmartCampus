@@ -78,7 +78,7 @@ def ReadSerie():
         logging.warning(string)
     elif s == "ERROR":
         # Create a log report
-        printf("Error during the transmission")
+        print("Error during the transmission")
         string = time.isoformat() + " : Error during the transmission"
         logging.error(string)
     elif s == "DEFAULT":
@@ -106,7 +106,7 @@ print(serial_ports())
 serialPort = input("Please enter the serial port where your device is connected (don't forget ' for linux users) : ")
 
 # For mqtt
-broker = "localhost"#"smartcampus2015.cloudapp.net"
+broker = "85.190.181.46"
 port = 1883
 topic = "SmartCampus/meteo"
 mqttc = paho.Client()
