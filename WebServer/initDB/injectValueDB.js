@@ -34,16 +34,21 @@ function injectData(name,h,j){
 function injectManyMesure(nbT,delay){
 	var i = 0;
     var j = 0;
+    var k = 0;
 	while (nbT > 0){
 		//setTimeout est non blocant
-		setTimeout(function(){injectData(1,i%24,j)}, delay*i);
-		i++;
+		setTimeout(function(){
+            console.log("i"+i);
+            i++;
         if((i%24) ===0){
             j++;
         }
-		nbT--;
+            injectData(1,i%24,j);
+        }, delay*k);
+        nbT--;
+		k++;
 	}
-	setTimeout(stopDB, delay*i);
+	setTimeout(stopDB, delay*k);
 }
 
 function stopDB(){
@@ -81,7 +86,7 @@ function main(){
 
 	console.log('connection is successed with db');
 //injection de valeur de température
-	var nbT = 100;
+	var nbT = 200;
 	var delay = 5000;
 	injectManyMesure(nbT,delay);
 }
