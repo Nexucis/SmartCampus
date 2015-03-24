@@ -841,7 +841,7 @@ function showModalHelp(htmlNodeToAppend) {
 */
 function buildPannelSensor(objElem){
 
-    $("#titleSensors").html("Info capteurs n°"+objElem.name);
+    $("#titleSensors").html("Info capteur n°"+objElem.name);
 
 
     cleanChildOfNodeID("contentPanelSensors");
